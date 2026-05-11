@@ -1069,6 +1069,327 @@ This lab lays the **foundation** for everything in deep learning:
 
 ---
 
+📘 Lab 2 MCQs — TensorFlow 2.x (40 Questions)
+🧠 1. What is TensorFlow mainly used for?
+A) Web development
+B) Deep learning and numerical computation
+C) Game development
+D) Operating systems
+
+✅ Answer: B
+
+🔢 2. What is a TensorFlow tensor?
+A) Mutable array
+B) Database table
+C) N-dimensional immutable array
+D) String object
+
+✅ Answer: C
+
+⚙️ 3. Which execution mode does TensorFlow 2.x use by default?
+A) Graph mode only
+B) Eager execution
+C) Batch mode
+D) Static mode
+
+✅ Answer: B
+
+🧱 4. Which object is mutable in TensorFlow?
+A) tf.Tensor
+B) tf.Variable
+C) tf.constant
+D) tf.function
+
+✅ Answer: B
+
+📌 5. What does tf.constant create?
+A) Variable tensor
+B) Immutable tensor
+C) Random tensor
+D) Sparse matrix
+
+✅ Answer: B
+
+🧮 6. What is tf.Variable used for?
+A) Plotting graphs
+B) Storing trainable parameters
+C) Data cleaning
+D) File reading
+
+✅ Answer: B
+
+🔁 7. What does assign() do?
+A) Deletes variable
+B) Updates variable value
+C) Converts tensor
+D) Creates graph
+
+✅ Answer: B
+
+➕ 8. What does tf.add() do?
+A) Matrix inversion
+B) Element-wise addition
+C) Sorting
+D) Normalization
+
+✅ Answer: B
+
+✖️ 9. What does tf.multiply() do?
+A) Element-wise multiplication
+B) Matrix transpose
+C) Loss calculation
+D) Gradient computation
+
+✅ Answer: A
+
+🧮 10. What does tf.linalg.matmul() perform?
+A) Scalar multiplication
+B) Matrix multiplication
+C) Random sampling
+D) Sorting
+
+✅ Answer: B
+
+🎲 11. tf.random.normal generates values from?
+A) Uniform distribution
+B) Normal distribution
+C) Bernoulli distribution
+D) Poisson distribution
+
+✅ Answer: B
+
+📊 12. tf.reduce_mean calculates:
+A) Maximum value
+B) Minimum value
+C) Mean value
+D) Median
+
+✅ Answer: C
+
+🔢 13. What is tf.Tensor?
+A) Mutable variable
+B) Immutable data structure
+C) File format
+D) Model optimizer
+
+✅ Answer: B
+
+📦 14. What is tf.RaggedTensor used for?
+A) Fixed-size arrays
+B) Variable-length sequences
+C) Images only
+D) Scalars only
+
+✅ Answer: B
+
+🧠 15. What is tf.SparseTensor used for?
+A) Dense matrices
+B) Mostly zero data
+C) Text only
+D) Images
+
+✅ Answer: B
+
+⚙️ 16. What does @tf.function do?
+A) Slows execution
+B) Converts function into graph
+C) Deletes function
+D) Prints tensor
+
+✅ Answer: B
+
+⚡ 17. Why use @tf.function?
+A) Debugging
+B) Performance optimization
+C) Data cleaning
+D) Visualization
+
+✅ Answer: B
+
+🔁 18. What does tf.GradientTape do?
+A) Saves model
+B) Computes gradients
+C) Loads data
+D) Plots graphs
+
+✅ Answer: B
+
+📉 19. Gradient is used for:
+A) Sorting data
+B) Optimization
+C) Printing values
+D) File handling
+
+✅ Answer: B
+
+🧠 20. What is backpropagation?
+A) Forward prediction
+B) Gradient computation process
+C) Data loading
+D) Plotting graphs
+
+✅ Answer: B
+
+🔢 21. What shape does tf.constant support?
+A) Only 1D
+B) Only 2D
+C) Multi-dimensional
+D) Only scalars
+
+✅ Answer: C
+
+⚙️ 22. What is eager execution?
+A) Delayed execution
+B) Immediate execution
+C) Parallel execution
+D) Random execution
+
+✅ Answer: B
+
+🔁 23. What happens inside tf.function?
+A) Python runs slowly
+B) Code is optimized into graph
+C) Memory is deleted
+D) Data is lost
+
+✅ Answer: B
+
+📊 24. Which function calculates sum difference automatically?
+A) tf.reduce_sum
+B) tf.add
+C) tf.function
+D) tf.gradient
+
+✅ Answer: D
+
+📌 25. What is tf.Variable best for?
+A) Static data
+B) Trainable weights
+C) Images
+D) Strings
+
+✅ Answer: B
+
+🧮 26. What does matmul require?
+A) Scalars
+B) Rank > 1 tensors
+C) Strings
+D) Lists only
+
+✅ Answer: B
+
+🎲 27. Random tensors are used for:
+A) Debugging
+B) Initialization
+C) Printing
+D) Sorting
+
+✅ Answer: B
+
+📊 28. tf.reduce_mean reduces:
+A) Rows only
+B) Columns only
+C) Dimensions
+D) Variables
+
+✅ Answer: C
+
+🔢 29. TensorFlow supports:
+A) Only CPU
+B) CPU and GPU
+C) Only GPU
+D) Cloud only
+
+✅ Answer: B
+
+⚙️ 30. GradientTape is used in:
+A) Data loading
+B) Training models
+C) Visualization
+D) File storage
+
+✅ Answer: B
+
+📦 31. Which is immutable?
+A) tf.Variable
+B) tf.Tensor
+C) Python list
+D) NumPy array
+
+✅ Answer: B
+
+🔁 32. assign_add() does:
+A) Multiply
+B) Add to variable
+C) Delete variable
+D) Normalize
+
+✅ Answer: B
+
+🧠 33. TensorFlow computation is based on:
+A) Trees
+B) Graphs
+C) Lists
+D) Files
+
+✅ Answer: B
+
+⚡ 34. What improves performance in TensorFlow?
+A) tf.constant
+B) tf.function
+C) tf.print
+D) tf.list
+
+✅ Answer: B
+
+📊 35. Which is NOT a TensorFlow data structure?
+A) Tensor
+B) Variable
+C) DataFrame
+D) SparseTensor
+
+✅ Answer: C
+
+🔢 36. What does tf.constant store?
+A) Trainable weights
+B) Fixed values
+C) Graphs
+D) Models
+
+✅ Answer: B
+
+🧮 37. Matrix multiplication output depends on:
+A) Shape compatibility
+B) Random seed
+C) Loss function
+D) Dataset size
+
+✅ Answer: A
+
+🎲 38. tf.random.normal is useful for:
+A) Loss calculation
+B) Weight initialization
+C) File reading
+D) Sorting
+
+✅ Answer: B
+
+📉 39. Gradient descent uses:
+A) Random search
+B) Gradients
+C) Sorting
+D) Clustering
+
+✅ Answer: B
+
+🚀 40. Main goal of TensorFlow training:
+A) Increase loss
+B) Minimize loss
+C) Delete model
+D) Freeze weights
+
+✅ Answer: B
+
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
