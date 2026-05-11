@@ -713,113 +713,177 @@ D) Create databases
 
 </details>
 
-# 📘 Lab 2: Introduction to TensorFlow 2.x
+# 🧠 Lab 2: Introduction to TensorFlow 2.x
 
-## 🎯 Lab Overview
+> A hands-on introduction to the core building blocks of TensorFlow 2.x — tensors, variables, math ops, computation graphs, and automatic differentiation.
 
-This lab introduces **TensorFlow 2.x**, one of the most powerful frameworks for **Deep Learning** and **Machine Learning**.
-
-It focuses on understanding the core building blocks of TensorFlow:
-
-- 🔢 Tensors (data representation)
-- ⚙️ Variables (trainable parameters)
-- 🧮 Mathematical operations
-- 📊 Computation graphs (`@tf.function`)
-- 🔁 Automatic differentiation (`tf.GradientTape`)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=for-the-badge)
 
 ---
 
-# 🧠 1. What is TensorFlow 2.x?
+## 📋 Table of Contents
 
-**TensorFlow** is an open-source library used for:
-
-- 🤖 Machine Learning  
-- 🧠 Deep Learning  
-- 📊 Numerical computation  
-
-## ✨ Key Feature: Eager Execution
-
-TensorFlow 2.x runs in **eager mode by default**:
-
-✔ Operations execute immediately  
-✔ Easier debugging  
-✔ More Python-like behavior  
-
----
-
-# 📦 2. Core Data Structures in TensorFlow
+- [Overview](#-overview)
+- [What is TensorFlow 2.x?](#-what-is-tensorflow-2x)
+- [Core Data Structures](#-core-data-structures)
+  - [Tensor](#-21-tensor-tftensor)
+  - [Variable](#-22-variable-tfvariable)
+  - [RaggedTensor](#-23-raggedtensor)
+  - [SparseTensor](#-24-sparsetensor)
+- [Basic Operations](#-basic-tensor-operations)
+- [Random Tensors](#-random-tensors)
+- [Reduction Operations](#-reduction-operations)
+- [Computation Graphs](#️-computation-graphs-tffunction)
+- [Automatic Differentiation](#-automatic-differentiation-tfgradienttape)
+- [Summary](#-key-concepts-summary)
+- [Full Workflow](#-full-tensorflow-workflow)
 
 ---
 
-## 🔵 2.1 Tensor (`tf.Tensor`)
+## 📘 Overview
 
-A **Tensor** is the main data structure in TensorFlow.
+This lab covers the foundational concepts of TensorFlow 2.x:
 
-### ✔ Properties:
+| Topic | Description |
+|-------|-------------|
+| 🔢 **Tensors** | Core data representation |
+| ⚙️ **Variables** | Trainable model parameters |
+| 🧮 **Math Ops** | Arithmetic & matrix operations |
+| 📊 **Graphs** | Optimized computation via `@tf.function` |
+| 🔁 **Autodiff** | Gradient computation via `tf.GradientTape` |
 
-- Immutable (cannot be changed)
-- Multi-dimensional array (n-dimensional)
+---
 
-### 📌 Example
+## 🤖 What is TensorFlow 2.x?
+
+**TensorFlow** is an open-source library developed by Google for:
+
+- 🤖 Machine Learning
+- 🧠 Deep Learning
+- 📊 Numerical Computation
+
+### ✨ Eager Execution (Default in TF 2.x)
+
+TensorFlow 2.x runs in **eager mode** by default — no more building static graphs before running them.
+
+```
+✔ Operations execute immediately
+✔ Easier debugging
+✔ More Python-like behavior
+```
+
+---
+
+## 📦 Core Data Structures
+
+### 🔵 2.1 Tensor (`tf.Tensor`)
+
+The **primary data structure** in TensorFlow. Think of it as an n-dimensional array.
+
+| Property | Description |
+|----------|-------------|
+| **Immutable** | Cannot be changed after creation |
+| **Multi-dimensional** | Supports scalars, vectors, matrices, and beyond |
 
 ```python
 import tensorflow as tf
 
 tensor = tf.constant([[1, 2], [3, 4]], dtype=tf.float32)
-
 print(tensor)
-📌 Output
+```
+
+**Output:**
+```
 tf.Tensor(
 [[1. 2.]
  [3. 4.]], shape=(2, 2), dtype=float32)
-🟢 2.2 Variable (tf.Variable)
+```
 
-Variables are used for trainable parameters in models.
+---
 
-✔ Properties:
-Mutable (can change values)
-Used for weights & biases
-📌 Example
+### 🟢 2.2 Variable (`tf.Variable`)
+
+Used for **trainable parameters** like weights and biases in neural networks.
+
+| Property | Description |
+|----------|-------------|
+| **Mutable** | Can be updated during training |
+| **Tracked** | TensorFlow monitors changes for gradient computation |
+
+```python
 var = tf.Variable([[1.0, 2.0],
                    [3.0, 4.0]])
-
 print(var)
-🔄 Updating Variables
+```
+
+**Updating a Variable:**
+
+```python
 var.assign([[5.0, 6.0],
             [7.0, 8.0]])
 
 print(var.numpy())
-📌 Output
+```
+
+**Output:**
+```
 [[5. 6.]
  [7. 8.]]
-🟣 2.3 RaggedTensor
+```
 
-Used when rows have different lengths:
+---
 
+### 🟣 2.3 RaggedTensor
+
+Used when rows have **different lengths** (variable-length sequences).
+
+```
 [[1, 2, 3],
  [4, 5],
  [6]]
+```
 
-✔ Useful for variable-length sequences
+> ✔ Ideal for NLP tasks like tokenized sentences of varying length.
 
-🟡 2.4 SparseTensor
+---
 
-Used when most values are zero.
+### 🟡 2.4 SparseTensor
 
+Used when **most values are zero**.
+
+```
 ✔ Memory efficient
-✔ Used in large sparse datasets
+✔ Used in large sparse datasets (e.g., one-hot encodings, graph adjacency matrices)
+```
 
-🧮 3. Basic Tensor Operations
-➕ Arithmetic Operations
+---
+
+## 🧮 Basic Tensor Operations
+
+### ➕ Arithmetic Operations
+
+```python
 x = tf.constant([1, 2, 3])
 y = tf.constant([4, 5, 6])
 
-print(tf.add(x, y))
-print(tf.multiply(x, y))
-📌 Output
-[5 7 9]
-[4 10 18]
-🔢 Matrix Multiplication
+print(tf.add(x, y))       # [5 7 9]
+print(tf.multiply(x, y))  # [4 10 18]
+```
+
+**Output:**
+```
+tf.Tensor([5 7 9], shape=(3,), dtype=int32)
+tf.Tensor([ 4 10 18], shape=(3,), dtype=int32)
+```
+
+---
+
+### 🔢 Matrix Multiplication
+
+```python
 a = tf.constant([[1, 2],
                  [3, 4]])
 
@@ -827,127 +891,194 @@ b = tf.constant([[5, 6],
                  [7, 8]])
 
 print(tf.linalg.matmul(a, b))
-📌 Output
+```
+
+**Output:**
+```
+tf.Tensor(
 [[19 22]
- [43 50]]
-🎲 4. Random Tensors
-📌 Normal Distribution
+ [43 50]], shape=(2, 2), dtype=int32)
+```
+
+---
+
+## 🎲 Random Tensors
+
+Useful for **weight initialization** and generating noise.
+
+```python
+# Normal distribution
 rand = tf.random.normal((2, 2))
-
 print(rand)
+```
 
-✔ Uses:
+| Use Case | Function |
+|----------|----------|
+| Normal distribution | `tf.random.normal()` |
+| Uniform distribution | `tf.random.uniform()` |
+| Reproducible results | `tf.random.set_seed()` |
 
-Weight initialization
-Noise generation
-📊 5. Reduction Operations
-📌 Mean
+---
+
+## 📊 Reduction Operations
+
+### Mean of all elements
+
+```python
 t = tf.constant([[1.0, 2.0],
                  [3.0, 4.0]])
 
-print(tf.reduce_mean(t))
-📌 Output
-2.5
-📌 Mean by Axis
-print(tf.reduce_mean(t, axis=0))
-⚙️ 6. Computation Graphs (@tf.function)
-🧠 Purpose:
+print(tf.reduce_mean(t))       # 2.5
+```
 
-Converts Python functions into optimized TensorFlow graphs.
+### Mean along an axis
 
-✔ Faster execution
-✔ Better performance
+```python
+print(tf.reduce_mean(t, axis=0))  # Column-wise mean → [2. 3.]
+print(tf.reduce_mean(t, axis=1))  # Row-wise mean    → [1.5 3.5]
+```
 
-📌 Example
+---
+
+## ⚙️ Computation Graphs (`@tf.function`)
+
+The `@tf.function` decorator **converts Python functions into optimized TensorFlow graphs**.
+
+```python
 @tf.function
 def add(a, b):
     return a + b
 
-print(add(1, 2))
-🔁 7. Automatic Differentiation (tf.GradientTape)
+print(add(1, 2))  # tf.Tensor(3, shape=(), dtype=int32)
+```
 
-Used to compute gradients automatically.
+| Benefit | Description |
+|---------|-------------|
+| ⚡ Faster execution | Compiled graph runs faster than eager mode |
+| 📦 Exportable | Can be saved and deployed to production |
+| 🔄 Auto-optimization | XLA compilation and graph pruning |
 
-🧠 Why it matters?
+---
 
-Used in:
+## 🔁 Automatic Differentiation (`tf.GradientTape`)
 
-Neural network training
-Backpropagation
-📌 Example
+TensorFlow records operations inside a `GradientTape` context to compute gradients automatically — the backbone of **backpropagation**.
+
+```python
 x = tf.Variable(3.0)
 
 with tf.GradientTape() as tape:
-    y = x * x   # y = x^2
+    y = x * x   # y = x²
 
 dy_dx = tape.gradient(y, x)
+print(dy_dx)  # 6.0
+```
 
-print(dy_dx)
-📌 Output
-6.0
-🧠 Explanation
-y=x
-2
+### 🧠 Math Explanation
 
-Derivative:
+Given:
 
-dx
-dy
-	​
+$$y = x^2$$
 
-=2x
+The derivative is:
 
-At x = 3:
+$$\frac{dy}{dx} = 2x$$
 
-2×3=6
-🔥 8. Key Concepts Summary
-📦 Data Structures
-Type	Description
-Tensor	Immutable multi-dimensional array
-Variable	Trainable model parameter
-RaggedTensor	Uneven-length data
-SparseTensor	Mostly zero values
-⚙️ Core Tools
-Tool	Purpose
-tf.constant	Fixed tensors
-tf.Variable	Trainable parameters
-tf.GradientTape	Compute gradients
-tf.function	Optimize performance
-🧮 Mathematical Operations
-➕ add
-➖ subtract
-✖ multiply
-➗ divide
-🧮 matrix multiplication
-🚀 9. Why This Lab Matters
+At $x = 3$:
 
-This lab builds the foundation for:
+$$2 \times 3 = \boxed{6}$$
 
-🤖 Neural Networks
-🧠 Deep Learning
-📊 Optimization algorithms
-🔁 Backpropagation
-🌍 10. Full TensorFlow Workflow
-Input Data
-   ↓
-Tensors
-   ↓
-Variables (Model Parameters)
-   ↓
-Forward Pass
-   ↓
-Loss Function
-   ↓
-GradientTape
-   ↓
-Weight Update
-🎯 Final Takeaway
+---
 
-✔ TensorFlow = Deep Learning engine
-✔ Tensors = data representation
-✔ Variables = learnable parameters
-✔ GradientTape = learning mechanism
-✔ tf.function = performance optimization
+## 🔥 Key Concepts Summary
+
+### 📦 Data Structures
+
+| Type | Mutable | Use Case |
+|------|---------|----------|
+| `tf.Tensor` | ❌ | General data representation |
+| `tf.Variable` | ✅ | Trainable weights & biases |
+| `RaggedTensor` | ❌ | Variable-length sequences |
+| `SparseTensor` | ❌ | Mostly-zero data |
+
+### ⚙️ Core Tools
+
+| Tool | Purpose |
+|------|---------|
+| `tf.constant` | Create fixed tensors |
+| `tf.Variable` | Create trainable parameters |
+| `tf.GradientTape` | Compute gradients (backprop) |
+| `@tf.function` | Optimize & compile functions |
+
+### 🧮 Mathematical Operations
+
+| Symbol | Function |
+|--------|----------|
+| ➕ | `tf.add` |
+| ➖ | `tf.subtract` |
+| ✖️ | `tf.multiply` |
+| ➗ | `tf.divide` |
+| 🔢 | `tf.linalg.matmul` |
+
+---
+
+## 🌍 Full TensorFlow Workflow
+
+```
+📥 Input Data
+     ↓
+🔢 Tensors  (data representation)
+     ↓
+⚙️  Variables  (model parameters: weights & biases)
+     ↓
+➡️  Forward Pass  (predictions)
+     ↓
+📉 Loss Function  (measure error)
+     ↓
+🔁 GradientTape  (compute gradients)
+     ↓
+🔄 Weight Update  (optimizer step)
+     ↓
+🔁 Repeat until convergence
+```
+
+---
+
+## 🚀 Why This Lab Matters
+
+This lab lays the **foundation** for everything in deep learning:
+
+| Concept | Builds Toward |
+|---------|---------------|
+| Tensors & Variables | Model architecture |
+| Math Operations | Layer computations |
+| GradientTape | Backpropagation & training |
+| `@tf.function` | Production deployment |
+
+---
+
+## 🎯 Final Takeaway
+
+```
+✔ TensorFlow  =  Deep Learning engine
+✔ Tensors     =  Data representation
+✔ Variables   =  Learnable parameters
+✔ GradientTape =  Learning mechanism
+✔ tf.function =  Performance optimization
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Made with ❤️ for Deep Learning enthusiasts
+</p>
+
 ## 👤 Author
 
 **Mohamed Shaaban** — [GitHub Profile](https://github.com/Mohmed-Shaaban)
