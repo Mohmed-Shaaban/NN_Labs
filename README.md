@@ -771,6 +771,167 @@ tensor = tf.constant([[1, 2], [3, 4]], dtype=tf.float32)
 
 print(tensor)
 
+Output
+tf.Tensor(
+[[1. 2.]
+ [3. 4.]], shape=(2, 2), dtype=float32)
+🟢 2.2 Variable (tf.Variable)
+
+Variables are:
+
+mutable
+used for model parameters (weights, biases)
+Example
+var = tf.Variable([[1.0, 2.0], [3.0, 4.0]])
+print(var)
+Update Variable
+var.assign([[5.0, 6.0], [7.0, 8.0]])
+print(var.numpy())
+Output
+[[5. 6.]
+ [7. 8.]]
+🟣 2.3 RaggedTensor
+
+Used when rows have different lengths:
+
+[[1, 2, 3],
+ [4, 5],
+ [6]]
+🟡 2.4 SparseTensor
+
+Used when most values are zero.
+
+✔ Efficient memory usage
+✔ Useful for sparse data
+
+🧮 3. Basic Tensor Operations
+➕ Arithmetic Operations
+x = tf.constant([1, 2, 3])
+y = tf.constant([4, 5, 6])
+
+print(tf.add(x, y))
+print(tf.multiply(x, y))
+Output
+[5 7 9]
+[4 10 18]
+🔢 Matrix Multiplication
+a = tf.constant([[1, 2], [3, 4]])
+b = tf.constant([[5, 6], [7, 8]])
+
+print(tf.linalg.matmul(a, b))
+Output
+[[19 22]
+ [43 50]]
+🎲 4. Random Tensors
+Normal Distribution
+rand = tf.random.normal((2, 2))
+print(rand)
+
+Used for:
+
+weight initialization
+noise generation
+📊 5. Reduction Operations
+📌 Mean
+t = tf.constant([[1.0, 2.0], [3.0, 4.0]])
+
+print(tf.reduce_mean(t))
+Output
+2.5
+📌 Mean by Axis
+print(tf.reduce_mean(t, axis=0))
+⚙️ 6. Computation Graphs (@tf.function)
+🧠 What it does?
+
+Converts Python function into optimized TensorFlow graph.
+
+✔ faster execution
+✔ better performance
+
+Example
+@tf.function
+def add(a, b):
+    return a + b
+
+print(add(1, 2))
+🔁 7. Automatic Differentiation (tf.GradientTape)
+
+Used for computing gradients automatically.
+
+📌 Why important?
+
+Used in:
+
+training neural networks
+backpropagation
+Example
+x = tf.Variable(3.0)
+
+with tf.GradientTape() as tape:
+    y = x * x   # y = x^2
+
+dy_dx = tape.gradient(y, x)
+
+print(dy_dx)
+Output
+6.0
+🧠 Explanation
+y=x
+2
+
+Derivative:
+
+dx
+dy
+	​
+
+=2x
+
+At x = 3:
+
+2×3=6
+🔥 8. Key Concepts Summary
+📦 Data Types
+Type	Meaning
+Tensor	Immutable data
+Variable	Trainable parameter
+RaggedTensor	Uneven sequences
+SparseTensor	Mostly zeros
+⚙️ Core Tools
+Tool	Purpose
+tf.constant	Fixed values
+tf.Variable	Learnable weights
+tf.GradientTape	Compute gradients
+tf.function	Optimize performance
+🧠 Mathematical Ops
+➕ add
+➖ subtract
+✖ multiply
+➗ divide
+🧮 matmul
+🚀 9. Why This Lab Matters
+
+This lab is the foundation of:
+
+🤖 Neural Networks
+🧠 Deep Learning
+📊 Optimization
+🔁 Backpropagation
+🌍 10. Full Workflow in TensorFlow
+Input Data
+   ↓
+Tensors
+   ↓
+Model (Variables)
+   ↓
+Forward Pass
+   ↓
+Loss Function
+   ↓
+GradientTape
+   ↓
+Update Weights
+
 ## 👤 Author
 
 **Mohamed Shaaban** — [GitHub Profile](https://github.com/Mohmed-Shaaban)
