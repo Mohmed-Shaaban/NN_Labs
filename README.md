@@ -33,7 +33,19 @@
   - [Full Workflow](#-full-tensorflow-workflow)
   - [Lab 2 Key Concepts](#-key-concepts-summary--lab-2)
   - [Lab 2 MCQs](#-lab-2-mcqs-40-questions)
-- [Combined Summary](#-combined-key-concepts-both-labs)
+- [Lab 3 — Linear Regression with TensorFlow](#-lab-3-linear-regression-with-tensorflow)
+  - [Lab Summary](#-lab-summary)
+  - [Data Generation](#-1-data-generation)
+  - [Data Preparation](#-2-data-preparation)
+  - [Model Building](#-3-model-building)
+  - [Loss Function](#-4-loss-function)
+  - [Training Loop](#️-5-training-loop-core-idea)
+  - [Key TensorFlow Functions](#-6-key-tensorflow-functions)
+  - [Evaluation](#-7-evaluation)
+  - [Full Training Pipeline](#-8-full-training-pipeline)
+  - [Key Takeaways](#-9-key-takeaways)
+  - [Lab 3 MCQs](#-lab-3-mcqs-40-questions)
+- [Combined Summary](#-combined-key-concepts-all-labs)
 - [Author](#-author)
 - [License](#-license)
 
@@ -45,6 +57,7 @@
 |-----|-------|-----------|
 | **Lab 1** | Python Data Science Foundations | NumPy, Pandas, Matplotlib |
 | **Lab 2** | Introduction to TensorFlow 2.x | TensorFlow 2.x |
+| **Lab 3** | Linear Regression with TensorFlow | TensorFlow Core API, Gradient Descent |
 
 ---
 ---
@@ -1480,7 +1493,737 @@ D) Reshaping
 ---
 ---
 
-## 🧠 Combined Key Concepts (Both Labs)
+---
+---
+
+# 🟠 Lab 3: Linear Regression with TensorFlow
+
+> Build and train a **Multiple Linear Regression** model from scratch using TensorFlow's Core API, a custom training loop, and gradient descent.
+
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Regression](https://img.shields.io/badge/Task-Regression-blue?style=for-the-badge)
+![Custom Loop](https://img.shields.io/badge/Training-Custom%20Loop-orange?style=for-the-badge)
+
+---
+
+## 🎯 Lab Summary
+
+This lab demonstrates how to build and train a Multiple Linear Regression model using:
+
+| Component | Tool |
+|-----------|------|
+| ⚙️ Model API | `tf.Module` |
+| 🔁 Optimizer | Gradient Descent (manual) |
+| 📊 Training | Custom training loop |
+| 📉 Loss | Mean Squared Error (MSE) |
+
+---
+
+## 🧠 Main Idea
+
+We want to learn a function that maps input features → continuous output:
+
+```
+y = w₁x₁ + w₂x₂ + ⋯ + b
+```
+
+The model learns **weights `w`** and **bias `b`** by minimizing prediction error.
+
+---
+
+## 📦 1. Data Generation
+
+### 📊 Synthetic Dataset
+
+We create artificial data using a known equation:
+
+```
+y = w·x + b + noise
+```
+
+**Why synthetic data?**
+
+```
+✔ We know the true pattern
+✔ Helps verify if the model learns correctly
+✔ No need for external datasets
+```
+
+---
+
+## 🔀 2. Data Preparation
+
+### Steps
+
+**🔹 Shuffle data** — Randomly mixes samples to avoid learning order bias.
+
+**🔹 Split data:**
+
+| Set | Purpose |
+|-----|---------|
+| 🟢 Training set | Model learns from this |
+| 🔵 Testing set | Model is evaluated on this |
+
+### TensorFlow Dataset Pipeline
+
+```python
+# Create dataset from arrays
+tf.data.Dataset.from_tensor_slices((x, y))
+```
+
+```python
+# Shuffle — randomizes data order, prevents overfitting patterns
+dataset.shuffle(buffer_size=100)
+```
+
+```python
+# Batch — splits into mini-batches for faster training
+dataset.batch(32)
+```
+
+---
+
+## 🧠 3. Model Building
+
+We define a custom model using `tf.Module`.
+
+### Linear Regression Equation
+
+```
+y = W·x + b
+```
+
+| Symbol | Meaning |
+|--------|---------|
+| `W` | Weights (learned from data) |
+| `b` | Bias (learned from data) |
+| `x` | Input features |
+| `y` | Predicted output |
+
+### Forward Pass
+
+```python
+y_pred = W * x + b
+```
+
+---
+
+## 📉 4. Loss Function
+
+### 🔵 Mean Squared Error (MSE)
+
+```
+MSE = (1/n) · Σ (y - ŷ)²
+```
+
+| Property | Description |
+|----------|-------------|
+| Measures | Prediction error |
+| Lower = | Better model |
+| Used in | Regression tasks |
+
+---
+
+## ⚙️ 5. Training Loop (Core Idea)
+
+Instead of built-in `model.fit()`, we use a **custom training loop** for full control.
+
+### Steps per Epoch
+
+```
+1️⃣  Forward Pass     →  Model makes predictions
+2️⃣  Compute Loss     →  Calculate MSE
+3️⃣  Compute Gradients →  Using tf.GradientTape()
+4️⃣  Update Weights   →  variable.assign_sub(lr * gradient)
+```
+
+### Gradient Descent Update Rule
+
+```
+w = w - α · (∂L/∂w)
+b = b - α · (∂L/∂b)
+```
+
+Where `α` is the **learning rate**.
+
+### Code Pattern
+
+```python
+with tf.GradientTape() as tape:
+    y_pred = model(x)
+    loss = mse(y, y_pred)
+
+gradients = tape.gradient(loss, model.trainable_variables)
+
+for var, grad in zip(model.trainable_variables, gradients):
+    var.assign_sub(learning_rate * grad)
+```
+
+---
+
+## 🔁 6. Key TensorFlow Functions
+
+### `tf.stack()`
+
+Combines multiple tensors into one along a new dimension.
+
+```python
+tf.stack([a, b], axis=0)   # ✔ Adds new dimension
+```
+
+---
+
+### `tf.squeeze()`
+
+Removes dimensions of size 1.
+
+```python
+tf.squeeze(tensor)         # ✔ Removes extra dimensions
+```
+
+---
+
+### `tf.data.Dataset`
+
+Pipeline system for efficient data handling:
+
+| Method | Purpose |
+|--------|---------|
+| `from_tensor_slices()` | Convert arrays to dataset |
+| `shuffle()` | Randomize order |
+| `batch()` | Group into mini-batches |
+
+---
+
+### `assign_sub()`
+
+Performs in-place subtraction on a `tf.Variable` — used for weight updates.
+
+```python
+W.assign_sub(learning_rate * grad)
+# Equivalent to: W = W - learning_rate * grad
+```
+
+---
+
+## 📊 7. Evaluation
+
+After training, we evaluate the model on both sets:
+
+| Metric | Meaning |
+|--------|---------|
+| 📉 Training loss | Error on data the model trained on |
+| 📊 Testing loss | Error on unseen data (generalization) |
+
+### Interpretation
+
+```
+✔ Training loss ↓   →  Model is learning
+✔ Test loss ↓       →  Good generalization
+❌ Gap increases    →  Overfitting risk
+```
+
+We visualize **loss vs. epochs** to track model learning progress.
+
+---
+
+## 🔥 8. Full Training Pipeline
+
+```
+Input Data
+     ↓
+Shuffle → Batch
+     ↓
+Model (W, b)
+     ↓
+Forward Pass  →  y_pred = W·x + b
+     ↓
+Loss (MSE)    →  (1/n)·Σ(y - ŷ)²
+     ↓
+tf.GradientTape  →  compute ∂L/∂W, ∂L/∂b
+     ↓
+Weight Update  →  W -= lr · grad
+     ↓
+Repeat (epochs)
+     ↓
+Evaluate on Test Set
+```
+
+---
+
+## 🎯 9. Key Takeaways
+
+```
+✔ Linear regression  =  Weighted sum model
+✔ Gradient descent   =  Parameter optimization
+✔ tf.data            =  Efficient data pipeline
+✔ tf.GradientTape    =  Automatic differentiation
+✔ assign_sub()       =  Manual weight update
+✔ MSE                =  Regression loss function
+```
+
+---
+
+## 🚀 Why This Lab is Important
+
+This lab teaches the **foundation of all neural network training**:
+
+| Concept | Leads To |
+|---------|----------|
+| Custom training loop | Neural network training logic |
+| GradientTape | Backpropagation |
+| MSE loss | Regression objective functions |
+| tf.data pipeline | Scalable data loading |
+| Weight updates | Any deep learning optimizer |
+
+---
+
+## ❓ Lab 3 MCQs (40 Questions)
+
+<details>
+<summary><strong>1️⃣ What is the main goal of linear regression?</strong></summary>
+
+A) Classification  
+B) Clustering  
+C) Predict continuous values  
+D) Image detection  
+
+✅ **Answer: C**
+</details>
+
+<details>
+<summary><strong>2️⃣ Linear regression models the relationship between?</strong></summary>
+
+A) Images and labels  
+B) Inputs and continuous outputs  
+C) Text and speech  
+D) Pixels only  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>3️⃣ What is the general equation of linear regression?</strong></summary>
+
+A) y = x²  
+B) y = wx + b  
+C) y = log(x)  
+D) y = sin(x)  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>4️⃣ In y = wx + b, what is w?</strong></summary>
+
+A) Bias  
+B) Weight  
+C) Loss  
+D) Gradient  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>5️⃣ In y = wx + b, what is b?</strong></summary>
+
+A) Bias  
+B) Batch  
+C) Gradient  
+D) Feature  
+
+✅ **Answer: A**
+</details>
+
+<details>
+<summary><strong>6️⃣ What is used to measure error in this lab?</strong></summary>
+
+A) Accuracy  
+B) Cross entropy  
+C) Mean Squared Error  
+D) Precision  
+
+✅ **Answer: C**
+</details>
+
+<details>
+<summary><strong>7️⃣ MSE stands for?</strong></summary>
+
+A) Mean Standard Error  
+B) Mean Squared Error  
+C) Model Score Estimation  
+D) Mean Sample Error  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>8️⃣ What does MSE measure?</strong></summary>
+
+A) Model speed  
+B) Difference between predictions and true values  
+C) Data size  
+D) Learning rate  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>9️⃣ What is gradient descent used for?</strong></summary>
+
+A) Data visualization  
+B) Minimizing loss  
+C) Increasing error  
+D) Sorting data  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>🔟 Gradient descent updates?</strong></summary>
+
+A) Data  
+B) Model parameters  
+C) Labels  
+D) Files  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>1️⃣1️⃣ tf.data.Dataset is used for?</strong></summary>
+
+A) Plotting  
+B) Data pipeline creation  
+C) Model saving  
+D) Loss calculation  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>1️⃣2️⃣ What does dataset.shuffle() do?</strong></summary>
+
+A) Sorts data  
+B) Randomizes order  
+C) Deletes data  
+D) Normalizes data  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>1️⃣3️⃣ What does dataset.batch() do?</strong></summary>
+
+A) Merges models  
+B) Splits data into batches  
+C) Removes samples  
+D) Sorts features  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>1️⃣4️⃣ Why do we use batching?</strong></summary>
+
+A) Slower training  
+B) Faster training and memory efficiency  
+C) Increase loss  
+D) Random output  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>1️⃣5️⃣ tf.GradientTape is used for?</strong></summary>
+
+A) Visualization  
+B) Automatic differentiation  
+C) Data cleaning  
+D) Plotting graphs  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>1️⃣6️⃣ What does GradientTape compute?</strong></summary>
+
+A) Loss  
+B) Gradients  
+C) Accuracy  
+D) Predictions  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>1️⃣7️⃣ tf.Module is used to?</strong></summary>
+
+A) Store datasets  
+B) Build custom models  
+C) Plot graphs  
+D) Load CSV files  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>1️⃣8️⃣ In linear regression, the prediction is?</strong></summary>
+
+A) Sum of random values  
+B) Weighted sum of inputs  
+C) Image classification  
+D) Clustering result  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>1️⃣9️⃣ What does assign_sub() do?</strong></summary>
+
+A) Adds value  
+B) Subtracts value  
+C) Multiplies value  
+D) Resets variable  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>2️⃣0️⃣ assign_sub() is used for?</strong></summary>
+
+A) Forward pass  
+B) Updating weights  
+C) Data loading  
+D) Visualization  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>2️⃣1️⃣ Training loss represents?</strong></summary>
+
+A) Model accuracy  
+B) Error on training data  
+C) Test speed  
+D) Dataset size  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>2️⃣2️⃣ Test loss measures?</strong></summary>
+
+A) Performance on unseen data  
+B) Training speed  
+C) Memory usage  
+D) Gradient size  
+
+✅ **Answer: A**
+</details>
+
+<details>
+<summary><strong>2️⃣3️⃣ One training iteration includes?</strong></summary>
+
+A) Only prediction  
+B) Forward + loss + backward + update  
+C) Only plotting  
+D) Only loading data  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>2️⃣4️⃣ Gradient descent tries to?</strong></summary>
+
+A) Increase loss  
+B) Minimize loss  
+C) Randomize weights  
+D) Delete model  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>2️⃣5️⃣ Synthetic data means?</strong></summary>
+
+A) Real-world data  
+B) Generated artificial data  
+C) Missing data  
+D) Image data  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>2️⃣6️⃣ tf.stack() is used to?</strong></summary>
+
+A) Remove tensors  
+B) Combine tensors  
+C) Sort tensors  
+D) Normalize tensors  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>2️⃣7️⃣ tf.squeeze() removes?</strong></summary>
+
+A) Large values  
+B) Dimensions of size 1  
+C) Data samples  
+D) Loss values  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>2️⃣8️⃣ Learning rate controls?</strong></summary>
+
+A) Dataset size  
+B) Step size in gradient descent  
+C) Number of features  
+D) Model architecture  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>2️⃣9️⃣ If learning rate is too high?</strong></summary>
+
+A) Fast convergence always  
+B) Model may diverge  
+C) No change  
+D) Perfect training  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>3️⃣0️⃣ If learning rate is too low?</strong></summary>
+
+A) Very fast training  
+B) Slow convergence  
+C) No training  
+D) Random loss  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>3️⃣1️⃣ What is the purpose of the forward pass?</strong></summary>
+
+A) Update weights  
+B) Make predictions  
+C) Compute gradients  
+D) Shuffle data  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>3️⃣2️⃣ Backpropagation is used to?</strong></summary>
+
+A) Compute gradients  
+B) Load data  
+C) Plot graphs  
+D) Normalize inputs  
+
+✅ **Answer: A**
+</details>
+
+<details>
+<summary><strong>3️⃣3️⃣ Linear regression is a?</strong></summary>
+
+A) Classification model  
+B) Regression model  
+C) Clustering model  
+D) Reinforcement model  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>3️⃣4️⃣ Which TensorFlow feature improves performance?</strong></summary>
+
+A) tf.constant  
+B) tf.function  
+C) tf.print  
+D) tf.list  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>3️⃣5️⃣ Dataset.from_tensor_slices is used to?</strong></summary>
+
+A) Create dataset from tensors  
+B) Plot graphs  
+C) Train model directly  
+D) Save model  
+
+✅ **Answer: A**
+</details>
+
+<details>
+<summary><strong>3️⃣6️⃣ The goal of training is to?</strong></summary>
+
+A) Increase loss  
+B) Minimize loss  
+C) Randomize outputs  
+D) Freeze model  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>3️⃣7️⃣ Which function calculates gradients automatically?</strong></summary>
+
+A) tf.constant  
+B) tf.GradientTape  
+C) tf.stack  
+D) tf.data  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>3️⃣8️⃣ Model parameters in this lab are?</strong></summary>
+
+A) Images  
+B) Weights and bias  
+C) Labels only  
+D) Dataset  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>3️⃣9️⃣ What indicates good training?</strong></summary>
+
+A) Increasing loss  
+B) Decreasing loss  
+C) Random loss  
+D) Constant loss  
+
+✅ **Answer: B**
+</details>
+
+<details>
+<summary><strong>4️⃣0️⃣ The main output of a linear regression model is?</strong></summary>
+
+A) Class label  
+B) Continuous value  
+C) Image  
+D) Text  
+
+✅ **Answer: B**
+</details>
+
+---
+---
+
+## 🧠 Combined Key Concepts (All Labs)
 
 | Concept | Library | Meaning |
 |---------|---------|---------|
@@ -1491,6 +2234,10 @@ D) Reshaping
 | `tf.Variable` | TensorFlow | Trainable model parameter |
 | `GradientTape` | TensorFlow | Automatic differentiation |
 | `@tf.function` | TensorFlow | Graph-mode optimization |
+| `tf.Module` | TensorFlow | Custom model container |
+| `assign_sub()` | TensorFlow | In-place weight update |
+| `tf.data.Dataset` | TensorFlow | Efficient data pipeline |
+| MSE | TensorFlow | Regression loss function |
 | `GroupBy` | Pandas | Grouping rows by shared value |
 | Histogram | Matplotlib | Data distribution plot |
 
@@ -1508,6 +2255,8 @@ These labs build the **complete foundation** for Deep Learning:
 | TensorFlow Tensors | Model architecture |
 | GradientTape | Backpropagation & training |
 | `@tf.function` | Production deployment |
+| Linear Regression | Neural network training logic |
+| Custom Training Loop | Full deep learning pipelines |
 
 ---
 
@@ -1526,3 +2275,4 @@ This project is licensed under the [MIT License](LICENSE).
 <p align="center">
   Made with ❤️ for Deep Learning enthusiasts
 </p>
+
