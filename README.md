@@ -70,6 +70,20 @@
   - [Data Augmentation](#-4-data-augmentation)
   - [Training Process](#-5-model-training-process)
   - [Lab 7 MCQs](#-lab-7-mcqs-40-questions)
+- [Lab 8 — Transfer Learning with DenseNet121](#-lab-8-transfer-learning-with-densenet121)
+  - [What is Transfer Learning?](#-what-is-transfer-learning)
+  - [DenseNet121](#-what-is-densenet121)
+  - [Feature Extraction](#-feature-extraction-strategy)
+  - [Fine-Tuning](#-fine-tuning)
+  - [Training Strategies](#-three-training-strategies)
+  - [Lab 8 MCQs](#-lab-8-mcqs-40-questions)
+- [Lab 9 — LSTM on 20 Newsgroups](#-lab-9-lstm-on-20-newsgroups-dataset)
+  - [20 Newsgroups Dataset](#-20-newsgroups-dataset)
+  - [Text Preprocessing](#-text-preprocessing)
+  - [Embedding Layer](#-embedding-layer)
+  - [LSTM & Bidirectional LSTM](#-lstm--bidirectional-lstm)
+  - [Model Architecture](#-model-architecture)
+  - [Lab 9 MCQs](#-lab-9-mcqs-40-questions)
 - [Combined Summary](#-combined-key-concepts-all-labs)
 - [Author](#-author)
 - [License](#-license)
@@ -87,6 +101,8 @@
 | **Lab 5** | MNIST Neural Network (Custom Loop) | MLP, GradientTape, tf.data |
 | **Lab 6** | Keras Sequential Model (MNIST) | Keras, Dense, Softmax, Adam |
 | **Lab 7** | CNN for CIFAR-10 Classification | Conv2D, MaxPooling, Augmentation |
+| **Lab 8** | Transfer Learning with DenseNet121 | DenseNet121, Feature Extraction, Fine-Tuning |
+| **Lab 9** | LSTM on 20 Newsgroups | LSTM, Bidirectional, Tokenizer, Embedding |
 
 ---
 ---
@@ -274,8 +290,7 @@ Load Data  →  Clean Data  →  Analyze Data  →  Visualize Data  →  Train M
 
 ## ❓ Lab 1 MCQs (50 Questions)
 
-<details>
-<summary><strong>1️⃣ What is the primary purpose of NumPy?</strong></summary>
+**1️⃣ What is the primary purpose of NumPy?**
 
 A) Web development  
 B) Numerical computing and arrays  
@@ -283,10 +298,9 @@ C) Game design
 D) Database management  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣ Which NumPy object represents an n-dimensional array?</strong></summary>
+
+**2️⃣ Which NumPy object represents an n-dimensional array?**
 
 A) Series  
 B) DataFrame  
@@ -294,10 +308,9 @@ C) ndarray
 D) Tensor  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣ What will be the output of the following code?</strong></summary>
+
+**3️⃣ What will be the output of the following code?**
 
 ```python
 import numpy as np
@@ -311,10 +324,9 @@ C) {1,2,3}
 D) Error  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣ Which function creates evenly spaced values within an interval?</strong></summary>
+
+**4️⃣ Which function creates evenly spaced values within an interval?**
 
 A) np.zeros()  
 B) np.ones()  
@@ -322,10 +334,9 @@ C) np.arange()
 D) np.reshape()  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>5️⃣ What is the output of np.arange(0,5,2)?</strong></summary>
+
+**5️⃣ What is the output of np.arange(0,5,2)?**
 
 A) [0 1 2 3 4]  
 B) [0 2 4]  
@@ -333,10 +344,9 @@ C) [2 4 6]
 D) [0 2 4 6]  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>6️⃣ Which function creates an array filled with zeros?</strong></summary>
+
+**6️⃣ Which function creates an array filled with zeros?**
 
 A) np.empty()  
 B) np.full()  
@@ -344,10 +354,9 @@ C) np.zeros()
 D) np.array()  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>7️⃣ What is the shape of np.zeros((2,3))?</strong></summary>
+
+**7️⃣ What is the shape of np.zeros((2,3))?**
 
 A) 2 rows and 3 columns  
 B) 3 rows and 2 columns  
@@ -355,10 +364,9 @@ C) 6 rows
 D) 1 row and 6 columns  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>8️⃣ Which function creates an array of ones?</strong></summary>
+
+**8️⃣ Which function creates an array of ones?**
 
 A) np.ones()  
 B) np.zeros()  
@@ -366,10 +374,9 @@ C) np.identity()
 D) np.random()  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>9️⃣ What does np.random.randint() generate?</strong></summary>
+
+**9️⃣ What does np.random.randint() generate?**
 
 A) Floating-point numbers  
 B) Strings  
@@ -377,10 +384,9 @@ C) Random integers
 D) Boolean values  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>🔟 Which function generates random values between 0 and 1?</strong></summary>
+
+**🔟 Which function generates random values between 0 and 1?**
 
 A) np.random.randint()  
 B) np.random.rand()  
@@ -388,10 +394,9 @@ C) np.arange()
 D) np.linspace()  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣1️⃣ What does np.linspace() do?</strong></summary>
+
+**1️⃣1️⃣ What does np.linspace() do?**
 
 A) Creates random values  
 B) Creates evenly spaced values  
@@ -399,10 +404,9 @@ C) Creates identity matrix
 D) Creates zeros  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣2️⃣ What is the output of np.linspace(0,10,3)?</strong></summary>
+
+**1️⃣2️⃣ What is the output of np.linspace(0,10,3)?**
 
 A) [0 10]  
 B) [0 5 10]  
@@ -410,10 +414,9 @@ C) [1 5 9]
 D) [0 2 4]  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣3️⃣ What does reshape() do?</strong></summary>
+
+**1️⃣3️⃣ What does reshape() do?**
 
 A) Deletes data  
 B) Changes array shape  
@@ -421,10 +424,9 @@ C) Sorts values
 D) Adds elements  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣4️⃣ Which shape is valid for reshaping an array of 6 elements?</strong></summary>
+
+**1️⃣4️⃣ Which shape is valid for reshaping an array of 6 elements?**
 
 A) (2,3)  
 B) (4,4)  
@@ -432,10 +434,9 @@ C) (5,2)
 D) (7,1)  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>1️⃣5️⃣ What does arr.max() return?</strong></summary>
+
+**1️⃣5️⃣ What does arr.max() return?**
 
 A) Minimum value  
 B) Mean value  
@@ -443,10 +444,9 @@ C) Maximum value
 D) Index of maximum value  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>1️⃣6️⃣ What does arr.mean() compute?</strong></summary>
+
+**1️⃣6️⃣ What does arr.mean() compute?**
 
 A) Median  
 B) Mode  
@@ -454,10 +454,9 @@ C) Average
 D) Variance  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>1️⃣7️⃣ What does argmax() return?</strong></summary>
+
+**1️⃣7️⃣ What does argmax() return?**
 
 A) Largest value  
 B) Index of largest value  
@@ -465,10 +464,9 @@ C) Smallest value
 D) Mean value  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣8️⃣ Which operation accesses specific elements of an array?</strong></summary>
+
+**1️⃣8️⃣ Which operation accesses specific elements of an array?**
 
 A) Plotting  
 B) Reshaping  
@@ -476,10 +474,9 @@ C) Indexing
 D) Pooling  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>1️⃣9️⃣ What is slicing used for?</strong></summary>
+
+**1️⃣9️⃣ What is slicing used for?**
 
 A) Deleting arrays  
 B) Accessing subarrays  
@@ -487,10 +484,9 @@ C) Random generation
 D) Sorting arrays  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣0️⃣ Which library is mainly used for data analysis?</strong></summary>
+
+**2️⃣0️⃣ Which library is mainly used for data analysis?**
 
 A) TensorFlow  
 B) Pandas  
@@ -498,10 +494,9 @@ C) OpenCV
 D) Flask  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣1️⃣ What is a Pandas Series?</strong></summary>
+
+**2️⃣1️⃣ What is a Pandas Series?**
 
 A) 2D table  
 B) Image object  
@@ -509,10 +504,9 @@ C) 1D labeled array
 D) Neural network  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣2️⃣ What is a DataFrame?</strong></summary>
+
+**2️⃣2️⃣ What is a DataFrame?**
 
 A) One-dimensional array  
 B) Two-dimensional labeled table  
@@ -520,10 +514,9 @@ C) Neural network layer
 D) Random generator  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣3️⃣ Which function reads CSV files?</strong></summary>
+
+**2️⃣3️⃣ Which function reads CSV files?**
 
 A) pd.load()  
 B) pd.read_csv()  
@@ -531,10 +524,9 @@ C) pd.import()
 D) pd.open()  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣4️⃣ What does df.head() display?</strong></summary>
+
+**2️⃣4️⃣ What does df.head() display?**
 
 A) Last rows  
 B) Random rows  
@@ -542,10 +534,9 @@ C) First rows
 D) Middle rows  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣5️⃣ What does df.tail() display?</strong></summary>
+
+**2️⃣5️⃣ What does df.tail() display?**
 
 A) First rows  
 B) Last rows  
@@ -553,10 +544,9 @@ C) Random rows
 D) Column names  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣6️⃣ Which method uses labels for indexing?</strong></summary>
+
+**2️⃣6️⃣ Which method uses labels for indexing?**
 
 A) iloc[]  
 B) loc[]  
@@ -564,10 +554,9 @@ C) mean()
 D) tail()  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣7️⃣ Which method uses integer positions?</strong></summary>
+
+**2️⃣7️⃣ Which method uses integer positions?**
 
 A) loc[]  
 B) iloc[]  
@@ -575,10 +564,9 @@ C) groupby()
 D) plot()  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣8️⃣ What does groupby() do?</strong></summary>
+
+**2️⃣8️⃣ What does groupby() do?**
 
 A) Deletes groups  
 B) Groups rows based on values  
@@ -586,10 +574,9 @@ C) Creates plots
 D) Reshapes arrays  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣9️⃣ Which statistical function computes average?</strong></summary>
+
+**2️⃣9️⃣ Which statistical function computes average?**
 
 A) median()  
 B) std()  
@@ -597,10 +584,9 @@ C) mean()
 D) var()  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣0️⃣ Which function calculates standard deviation?</strong></summary>
+
+**3️⃣0️⃣ Which function calculates standard deviation?**
 
 A) mean()  
 B) std()  
@@ -608,10 +594,9 @@ C) var()
 D) median()  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣1️⃣ Which function calculates variance?</strong></summary>
+
+**3️⃣1️⃣ Which function calculates variance?**
 
 A) std()  
 B) mode()  
@@ -619,10 +604,9 @@ C) var()
 D) mean()  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣2️⃣ Which library is used for plotting graphs?</strong></summary>
+
+**3️⃣2️⃣ Which library is used for plotting graphs?**
 
 A) NumPy  
 B) Pandas  
@@ -630,10 +614,9 @@ C) Matplotlib
 D) SciPy  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣3️⃣ What does plt.hist() create?</strong></summary>
+
+**3️⃣3️⃣ What does plt.hist() create?**
 
 A) Line plot  
 B) Pie chart  
@@ -641,10 +624,9 @@ C) Histogram
 D) Scatter plot  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣4️⃣ What is a histogram used for?</strong></summary>
+
+**3️⃣4️⃣ What is a histogram used for?**
 
 A) Data distribution visualization  
 B) Sorting arrays  
@@ -652,10 +634,9 @@ C) Neural network training
 D) CSV reading  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣5️⃣ Which function creates line plots?</strong></summary>
+
+**3️⃣5️⃣ Which function creates line plots?**
 
 A) plt.hist()  
 B) plt.plot()  
@@ -663,10 +644,9 @@ C) plt.array()
 D) plt.group()  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣6️⃣ What does plt.show() do?</strong></summary>
+
+**3️⃣6️⃣ What does plt.show() do?**
 
 A) Saves file  
 B) Displays plot  
@@ -674,10 +654,9 @@ C) Deletes plot
 D) Reads plot  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣7️⃣ Which library provides fast numerical operations?</strong></summary>
+
+**3️⃣7️⃣ Which library provides fast numerical operations?**
 
 A) Pandas  
 B) Matplotlib  
@@ -685,10 +664,9 @@ C) NumPy
 D) Flask  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣8️⃣ Which structure is similar to an Excel sheet?</strong></summary>
+
+**3️⃣8️⃣ Which structure is similar to an Excel sheet?**
 
 A) ndarray  
 B) Series  
@@ -696,10 +674,9 @@ C) DataFrame
 D) Tuple  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣9️⃣ Which function creates random floating-point values?</strong></summary>
+
+**3️⃣9️⃣ Which function creates random floating-point values?**
 
 A) randint()  
 B) rand()  
@@ -707,10 +684,9 @@ C) arange()
 D) zeros()  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣0️⃣ What is the purpose of Matplotlib?</strong></summary>
+
+**4️⃣0️⃣ What is the purpose of Matplotlib?**
 
 A) Database management  
 B) Web development  
@@ -718,10 +694,9 @@ C) Data visualization
 D) Audio processing  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>4️⃣1️⃣ Which operation changes array dimensions?</strong></summary>
+
+**4️⃣1️⃣ Which operation changes array dimensions?**
 
 A) reshape()  
 B) mean()  
@@ -729,10 +704,9 @@ C) groupby()
 D) loc[]  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>4️⃣2️⃣ What does df.iloc[:,1] select?</strong></summary>
+
+**4️⃣2️⃣ What does df.iloc[:,1] select?**
 
 A) First row  
 B) Second column  
@@ -740,10 +714,9 @@ C) Last row
 D) Entire DataFrame  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣3️⃣ Which function returns the index of the minimum value?</strong></summary>
+
+**4️⃣3️⃣ Which function returns the index of the minimum value?**
 
 A) argmax()  
 B) min()  
@@ -751,10 +724,9 @@ C) argmin()
 D) mean()  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>4️⃣4️⃣ Which NumPy function creates arrays with evenly spaced values including decimals?</strong></summary>
+
+**4️⃣4️⃣ Which NumPy function creates arrays with evenly spaced values including decimals?**
 
 A) arange()  
 B) linspace()  
@@ -762,10 +734,9 @@ C) randint()
 D) zeros()  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣5️⃣ Which command creates a 2×2 matrix of ones?</strong></summary>
+
+**4️⃣5️⃣ Which command creates a 2×2 matrix of ones?**
 
 A) np.zeros((2,2))  
 B) np.ones((2,2))  
@@ -773,10 +744,9 @@ C) np.arange((2,2))
 D) np.rand((2,2))  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣6️⃣ Which Pandas object is one-dimensional?</strong></summary>
+
+**4️⃣6️⃣ Which Pandas object is one-dimensional?**
 
 A) DataFrame  
 B) ndarray  
@@ -784,10 +754,9 @@ C) Series
 D) Matrix  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>4️⃣7️⃣ What does filtering in Pandas mean?</strong></summary>
+
+**4️⃣7️⃣ What does filtering in Pandas mean?**
 
 A) Removing libraries  
 B) Selecting rows based on conditions  
@@ -795,10 +764,9 @@ C) Plotting graphs
 D) Reshaping arrays  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣8️⃣ Which command accesses the first element of a NumPy array arr?</strong></summary>
+
+**4️⃣8️⃣ Which command accesses the first element of a NumPy array arr?**
 
 A) arr(0)  
 B) arr[0]  
@@ -806,10 +774,9 @@ C) arr{0}
 D) arr.first()  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣9️⃣ Which library is commonly used together with NumPy and Pandas for plotting?</strong></summary>
+
+**4️⃣9️⃣ Which library is commonly used together with NumPy and Pandas for plotting?**
 
 A) OpenCV  
 B) Flask  
@@ -817,10 +784,9 @@ C) Matplotlib
 D) Django  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>5️⃣0️⃣ What is the main purpose of this lab?</strong></summary>
+
+**5️⃣0️⃣ What is the main purpose of this lab?**
 
 A) Build websites  
 B) Learn Python data science libraries  
@@ -828,7 +794,7 @@ C) Develop mobile apps
 D) Create databases  
 
 ✅ **Answer: B**
-</details>
+
 
 ---
 ---
@@ -1079,8 +1045,7 @@ At x = 3:     →     2 × 3 = 6 ✔
 
 ## ❓ Lab 2 MCQs (40 Questions)
 
-<details>
-<summary><strong>1️⃣ What is TensorFlow mainly used for?</strong></summary>
+**1️⃣ What is TensorFlow mainly used for?**
 
 A) Web development  
 B) Deep learning and numerical computation  
@@ -1088,10 +1053,9 @@ C) Game development
 D) Operating systems  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣ What is a TensorFlow tensor?</strong></summary>
+
+**2️⃣ What is a TensorFlow tensor?**
 
 A) Mutable array  
 B) Database table  
@@ -1099,10 +1063,9 @@ C) N-dimensional immutable array
 D) String object  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣ Which execution mode does TensorFlow 2.x use by default?</strong></summary>
+
+**3️⃣ Which execution mode does TensorFlow 2.x use by default?**
 
 A) Graph mode only  
 B) Eager execution  
@@ -1110,10 +1073,9 @@ C) Batch mode
 D) Static mode  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣ Which object is mutable in TensorFlow?</strong></summary>
+
+**4️⃣ Which object is mutable in TensorFlow?**
 
 A) tf.Tensor  
 B) tf.Variable  
@@ -1121,10 +1083,9 @@ C) tf.constant
 D) tf.function  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>5️⃣ What does tf.constant create?</strong></summary>
+
+**5️⃣ What does tf.constant create?**
 
 A) Variable tensor  
 B) Immutable tensor  
@@ -1132,10 +1093,9 @@ C) Random tensor
 D) Sparse matrix  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>6️⃣ What is tf.Variable used for?</strong></summary>
+
+**6️⃣ What is tf.Variable used for?**
 
 A) Plotting graphs  
 B) Storing trainable parameters  
@@ -1143,10 +1103,9 @@ C) Data cleaning
 D) File reading  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>7️⃣ What does assign() do?</strong></summary>
+
+**7️⃣ What does assign() do?**
 
 A) Deletes variable  
 B) Updates variable value  
@@ -1154,10 +1113,9 @@ C) Converts tensor
 D) Creates graph  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>8️⃣ What does tf.add() do?</strong></summary>
+
+**8️⃣ What does tf.add() do?**
 
 A) Matrix inversion  
 B) Element-wise addition  
@@ -1165,10 +1123,9 @@ C) Sorting
 D) Normalization  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>9️⃣ What does tf.multiply() do?</strong></summary>
+
+**9️⃣ What does tf.multiply() do?**
 
 A) Element-wise multiplication  
 B) Matrix transpose  
@@ -1176,10 +1133,9 @@ C) Loss calculation
 D) Gradient computation  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>🔟 What does tf.linalg.matmul() perform?</strong></summary>
+
+**🔟 What does tf.linalg.matmul() perform?**
 
 A) Scalar multiplication  
 B) Matrix multiplication  
@@ -1187,10 +1143,9 @@ C) Random sampling
 D) Sorting  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣1️⃣ tf.random.normal generates values from which distribution?</strong></summary>
+
+**1️⃣1️⃣ tf.random.normal generates values from which distribution?**
 
 A) Uniform distribution  
 B) Normal distribution  
@@ -1198,10 +1153,9 @@ C) Bernoulli distribution
 D) Poisson distribution  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣2️⃣ What does tf.reduce_mean calculate?</strong></summary>
+
+**1️⃣2️⃣ What does tf.reduce_mean calculate?**
 
 A) Maximum value  
 B) Minimum value  
@@ -1209,10 +1163,9 @@ C) Mean value
 D) Median  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>1️⃣3️⃣ What is tf.Tensor?</strong></summary>
+
+**1️⃣3️⃣ What is tf.Tensor?**
 
 A) Mutable variable  
 B) Immutable data structure  
@@ -1220,10 +1173,9 @@ C) File format
 D) Model optimizer  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣4️⃣ What is tf.RaggedTensor used for?</strong></summary>
+
+**1️⃣4️⃣ What is tf.RaggedTensor used for?**
 
 A) Fixed-size arrays  
 B) Variable-length sequences  
@@ -1231,10 +1183,9 @@ C) Images only
 D) Scalars only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣5️⃣ What is tf.SparseTensor used for?</strong></summary>
+
+**1️⃣5️⃣ What is tf.SparseTensor used for?**
 
 A) Dense matrices  
 B) Mostly zero data  
@@ -1242,10 +1193,9 @@ C) Text only
 D) Images  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣6️⃣ What does @tf.function do?</strong></summary>
+
+**1️⃣6️⃣ What does @tf.function do?**
 
 A) Slows execution  
 B) Converts function into graph  
@@ -1253,10 +1203,9 @@ C) Deletes function
 D) Prints tensor  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣7️⃣ Why use @tf.function?</strong></summary>
+
+**1️⃣7️⃣ Why use @tf.function?**
 
 A) Debugging  
 B) Performance optimization  
@@ -1264,10 +1213,9 @@ C) Data cleaning
 D) Visualization  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣8️⃣ What does tf.GradientTape do?</strong></summary>
+
+**1️⃣8️⃣ What does tf.GradientTape do?**
 
 A) Saves model  
 B) Computes gradients  
@@ -1275,10 +1223,9 @@ C) Loads data
 D) Plots graphs  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣9️⃣ Gradients are used for?</strong></summary>
+
+**1️⃣9️⃣ Gradients are used for?**
 
 A) Sorting data  
 B) Optimization  
@@ -1286,10 +1233,9 @@ C) Printing values
 D) File handling  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣0️⃣ What is backpropagation?</strong></summary>
+
+**2️⃣0️⃣ What is backpropagation?**
 
 A) Forward prediction  
 B) Gradient computation process  
@@ -1297,10 +1243,9 @@ C) Data loading
 D) Plotting graphs  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣1️⃣ What shape does tf.constant support?</strong></summary>
+
+**2️⃣1️⃣ What shape does tf.constant support?**
 
 A) Only 1D  
 B) Only 2D  
@@ -1308,10 +1253,9 @@ C) Multi-dimensional
 D) Only scalars  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣2️⃣ What is eager execution?</strong></summary>
+
+**2️⃣2️⃣ What is eager execution?**
 
 A) Delayed execution  
 B) Immediate execution  
@@ -1319,10 +1263,9 @@ C) Parallel execution
 D) Random execution  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣3️⃣ What happens inside @tf.function?</strong></summary>
+
+**2️⃣3️⃣ What happens inside @tf.function?**
 
 A) Python runs slowly  
 B) Code is optimized into a graph  
@@ -1330,10 +1273,9 @@ C) Memory is deleted
 D) Data is lost  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣4️⃣ What is tf.Variable best for?</strong></summary>
+
+**2️⃣4️⃣ What is tf.Variable best for?**
 
 A) Static data  
 B) Trainable weights  
@@ -1341,10 +1283,9 @@ C) Images
 D) Strings  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣5️⃣ What does matmul require?</strong></summary>
+
+**2️⃣5️⃣ What does matmul require?**
 
 A) Scalars  
 B) Shape-compatible tensors  
@@ -1352,10 +1293,9 @@ C) Strings
 D) Lists only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣6️⃣ Random tensors are used for?</strong></summary>
+
+**2️⃣6️⃣ Random tensors are used for?**
 
 A) Debugging  
 B) Weight initialization  
@@ -1363,10 +1303,9 @@ C) Printing
 D) Sorting  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣7️⃣ tf.reduce_mean reduces which dimension?</strong></summary>
+
+**2️⃣7️⃣ tf.reduce_mean reduces which dimension?**
 
 A) Rows only  
 B) Columns only  
@@ -1374,10 +1313,9 @@ C) Any specified dimension
 D) Variables  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣8️⃣ TensorFlow supports which hardware?</strong></summary>
+
+**2️⃣8️⃣ TensorFlow supports which hardware?**
 
 A) Only CPU  
 B) CPU and GPU  
@@ -1385,10 +1323,9 @@ C) Only GPU
 D) Cloud only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣9️⃣ GradientTape is used in?</strong></summary>
+
+**2️⃣9️⃣ GradientTape is used in?**
 
 A) Data loading  
 B) Training models  
@@ -1396,10 +1333,9 @@ C) Visualization
 D) File storage  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣0️⃣ Which TensorFlow object is immutable?</strong></summary>
+
+**3️⃣0️⃣ Which TensorFlow object is immutable?**
 
 A) tf.Variable  
 B) tf.Tensor  
@@ -1407,10 +1343,9 @@ C) Python list
 D) NumPy array  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣1️⃣ What does assign_add() do?</strong></summary>
+
+**3️⃣1️⃣ What does assign_add() do?**
 
 A) Multiply  
 B) Add a value to the variable  
@@ -1418,10 +1353,9 @@ C) Delete variable
 D) Normalize  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣2️⃣ TensorFlow computation is based on?</strong></summary>
+
+**3️⃣2️⃣ TensorFlow computation is based on?**
 
 A) Trees  
 B) Graphs  
@@ -1429,10 +1363,9 @@ C) Lists
 D) Files  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣3️⃣ What improves performance in TensorFlow?</strong></summary>
+
+**3️⃣3️⃣ What improves performance in TensorFlow?**
 
 A) tf.constant  
 B) tf.function  
@@ -1440,10 +1373,9 @@ C) tf.print
 D) tf.list  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣4️⃣ Which is NOT a TensorFlow data structure?</strong></summary>
+
+**3️⃣4️⃣ Which is NOT a TensorFlow data structure?**
 
 A) Tensor  
 B) Variable  
@@ -1451,10 +1383,9 @@ C) DataFrame
 D) SparseTensor  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣5️⃣ What does tf.constant store?</strong></summary>
+
+**3️⃣5️⃣ What does tf.constant store?**
 
 A) Trainable weights  
 B) Fixed values  
@@ -1462,10 +1393,9 @@ C) Graphs
 D) Models  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣6️⃣ Matrix multiplication output depends on?</strong></summary>
+
+**3️⃣6️⃣ Matrix multiplication output depends on?**
 
 A) Shape compatibility  
 B) Random seed  
@@ -1473,10 +1403,9 @@ C) Loss function
 D) Dataset size  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣7️⃣ tf.random.normal is useful for?</strong></summary>
+
+**3️⃣7️⃣ tf.random.normal is useful for?**
 
 A) Loss calculation  
 B) Weight initialization  
@@ -1484,10 +1413,9 @@ C) File reading
 D) Sorting  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣8️⃣ Gradient descent uses?</strong></summary>
+
+**3️⃣8️⃣ Gradient descent uses?**
 
 A) Random search  
 B) Gradients  
@@ -1495,10 +1423,9 @@ C) Sorting
 D) Clustering  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣9️⃣ What is the main goal of TensorFlow training?</strong></summary>
+
+**3️⃣9️⃣ What is the main goal of TensorFlow training?**
 
 A) Increase loss  
 B) Minimize loss  
@@ -1506,10 +1433,9 @@ C) Delete model
 D) Freeze weights  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣0️⃣ Which concept links GradientTape to model training?</strong></summary>
+
+**4️⃣0️⃣ Which concept links GradientTape to model training?**
 
 A) Data loading  
 B) Backpropagation  
@@ -1517,7 +1443,7 @@ C) Visualization
 D) Reshaping  
 
 ✅ **Answer: B**
-</details>
+
 
 ---
 ---
@@ -1809,8 +1735,7 @@ This lab teaches the **foundation of all neural network training**:
 
 ## ❓ Lab 3 MCQs (40 Questions)
 
-<details>
-<summary><strong>1️⃣ What is the main goal of linear regression?</strong></summary>
+**1️⃣ What is the main goal of linear regression?**
 
 A) Classification  
 B) Clustering  
@@ -1818,10 +1743,9 @@ C) Predict continuous values
 D) Image detection  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣ Linear regression models the relationship between?</strong></summary>
+
+**2️⃣ Linear regression models the relationship between?**
 
 A) Images and labels  
 B) Inputs and continuous outputs  
@@ -1829,10 +1753,9 @@ C) Text and speech
 D) Pixels only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣ What is the general equation of linear regression?</strong></summary>
+
+**3️⃣ What is the general equation of linear regression?**
 
 A) y = x²  
 B) y = wx + b  
@@ -1840,10 +1763,9 @@ C) y = log(x)
 D) y = sin(x)  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣ In y = wx + b, what is w?</strong></summary>
+
+**4️⃣ In y = wx + b, what is w?**
 
 A) Bias  
 B) Weight  
@@ -1851,10 +1773,9 @@ C) Loss
 D) Gradient  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>5️⃣ In y = wx + b, what is b?</strong></summary>
+
+**5️⃣ In y = wx + b, what is b?**
 
 A) Bias  
 B) Batch  
@@ -1862,10 +1783,9 @@ C) Gradient
 D) Feature  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>6️⃣ What is used to measure error in this lab?</strong></summary>
+
+**6️⃣ What is used to measure error in this lab?**
 
 A) Accuracy  
 B) Cross entropy  
@@ -1873,10 +1793,9 @@ C) Mean Squared Error
 D) Precision  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>7️⃣ MSE stands for?</strong></summary>
+
+**7️⃣ MSE stands for?**
 
 A) Mean Standard Error  
 B) Mean Squared Error  
@@ -1884,10 +1803,9 @@ C) Model Score Estimation
 D) Mean Sample Error  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>8️⃣ What does MSE measure?</strong></summary>
+
+**8️⃣ What does MSE measure?**
 
 A) Model speed  
 B) Difference between predictions and true values  
@@ -1895,10 +1813,9 @@ C) Data size
 D) Learning rate  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>9️⃣ What is gradient descent used for?</strong></summary>
+
+**9️⃣ What is gradient descent used for?**
 
 A) Data visualization  
 B) Minimizing loss  
@@ -1906,10 +1823,9 @@ C) Increasing error
 D) Sorting data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>🔟 Gradient descent updates?</strong></summary>
+
+**🔟 Gradient descent updates?**
 
 A) Data  
 B) Model parameters  
@@ -1917,10 +1833,9 @@ C) Labels
 D) Files  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣1️⃣ tf.data.Dataset is used for?</strong></summary>
+
+**1️⃣1️⃣ tf.data.Dataset is used for?**
 
 A) Plotting  
 B) Data pipeline creation  
@@ -1928,10 +1843,9 @@ C) Model saving
 D) Loss calculation  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣2️⃣ What does dataset.shuffle() do?</strong></summary>
+
+**1️⃣2️⃣ What does dataset.shuffle() do?**
 
 A) Sorts data  
 B) Randomizes order  
@@ -1939,10 +1853,9 @@ C) Deletes data
 D) Normalizes data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣3️⃣ What does dataset.batch() do?</strong></summary>
+
+**1️⃣3️⃣ What does dataset.batch() do?**
 
 A) Merges models  
 B) Splits data into batches  
@@ -1950,10 +1863,9 @@ C) Removes samples
 D) Sorts features  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣4️⃣ Why do we use batching?</strong></summary>
+
+**1️⃣4️⃣ Why do we use batching?**
 
 A) Slower training  
 B) Faster training and memory efficiency  
@@ -1961,10 +1873,9 @@ C) Increase loss
 D) Random output  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣5️⃣ tf.GradientTape is used for?</strong></summary>
+
+**1️⃣5️⃣ tf.GradientTape is used for?**
 
 A) Visualization  
 B) Automatic differentiation  
@@ -1972,10 +1883,9 @@ C) Data cleaning
 D) Plotting graphs  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣6️⃣ What does GradientTape compute?</strong></summary>
+
+**1️⃣6️⃣ What does GradientTape compute?**
 
 A) Loss  
 B) Gradients  
@@ -1983,10 +1893,9 @@ C) Accuracy
 D) Predictions  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣7️⃣ tf.Module is used to?</strong></summary>
+
+**1️⃣7️⃣ tf.Module is used to?**
 
 A) Store datasets  
 B) Build custom models  
@@ -1994,10 +1903,9 @@ C) Plot graphs
 D) Load CSV files  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣8️⃣ In linear regression, the prediction is?</strong></summary>
+
+**1️⃣8️⃣ In linear regression, the prediction is?**
 
 A) Sum of random values  
 B) Weighted sum of inputs  
@@ -2005,10 +1913,9 @@ C) Image classification
 D) Clustering result  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣9️⃣ What does assign_sub() do?</strong></summary>
+
+**1️⃣9️⃣ What does assign_sub() do?**
 
 A) Adds value  
 B) Subtracts value  
@@ -2016,10 +1923,9 @@ C) Multiplies value
 D) Resets variable  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣0️⃣ assign_sub() is used for?</strong></summary>
+
+**2️⃣0️⃣ assign_sub() is used for?**
 
 A) Forward pass  
 B) Updating weights  
@@ -2027,10 +1933,9 @@ C) Data loading
 D) Visualization  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣1️⃣ Training loss represents?</strong></summary>
+
+**2️⃣1️⃣ Training loss represents?**
 
 A) Model accuracy  
 B) Error on training data  
@@ -2038,10 +1943,9 @@ C) Test speed
 D) Dataset size  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣2️⃣ Test loss measures?</strong></summary>
+
+**2️⃣2️⃣ Test loss measures?**
 
 A) Performance on unseen data  
 B) Training speed  
@@ -2049,10 +1953,9 @@ C) Memory usage
 D) Gradient size  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>2️⃣3️⃣ One training iteration includes?</strong></summary>
+
+**2️⃣3️⃣ One training iteration includes?**
 
 A) Only prediction  
 B) Forward + loss + backward + update  
@@ -2060,10 +1963,9 @@ C) Only plotting
 D) Only loading data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣4️⃣ Gradient descent tries to?</strong></summary>
+
+**2️⃣4️⃣ Gradient descent tries to?**
 
 A) Increase loss  
 B) Minimize loss  
@@ -2071,10 +1973,9 @@ C) Randomize weights
 D) Delete model  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣5️⃣ Synthetic data means?</strong></summary>
+
+**2️⃣5️⃣ Synthetic data means?**
 
 A) Real-world data  
 B) Generated artificial data  
@@ -2082,10 +1983,9 @@ C) Missing data
 D) Image data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣6️⃣ tf.stack() is used to?</strong></summary>
+
+**2️⃣6️⃣ tf.stack() is used to?**
 
 A) Remove tensors  
 B) Combine tensors  
@@ -2093,10 +1993,9 @@ C) Sort tensors
 D) Normalize tensors  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣7️⃣ tf.squeeze() removes?</strong></summary>
+
+**2️⃣7️⃣ tf.squeeze() removes?**
 
 A) Large values  
 B) Dimensions of size 1  
@@ -2104,10 +2003,9 @@ C) Data samples
 D) Loss values  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣8️⃣ Learning rate controls?</strong></summary>
+
+**2️⃣8️⃣ Learning rate controls?**
 
 A) Dataset size  
 B) Step size in gradient descent  
@@ -2115,10 +2013,9 @@ C) Number of features
 D) Model architecture  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣9️⃣ If learning rate is too high?</strong></summary>
+
+**2️⃣9️⃣ If learning rate is too high?**
 
 A) Fast convergence always  
 B) Model may diverge  
@@ -2126,10 +2023,9 @@ C) No change
 D) Perfect training  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣0️⃣ If learning rate is too low?</strong></summary>
+
+**3️⃣0️⃣ If learning rate is too low?**
 
 A) Very fast training  
 B) Slow convergence  
@@ -2137,10 +2033,9 @@ C) No training
 D) Random loss  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣1️⃣ What is the purpose of the forward pass?</strong></summary>
+
+**3️⃣1️⃣ What is the purpose of the forward pass?**
 
 A) Update weights  
 B) Make predictions  
@@ -2148,10 +2043,9 @@ C) Compute gradients
 D) Shuffle data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣2️⃣ Backpropagation is used to?</strong></summary>
+
+**3️⃣2️⃣ Backpropagation is used to?**
 
 A) Compute gradients  
 B) Load data  
@@ -2159,10 +2053,9 @@ C) Plot graphs
 D) Normalize inputs  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣3️⃣ Linear regression is a?</strong></summary>
+
+**3️⃣3️⃣ Linear regression is a?**
 
 A) Classification model  
 B) Regression model  
@@ -2170,10 +2063,9 @@ C) Clustering model
 D) Reinforcement model  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣4️⃣ Which TensorFlow feature improves performance?</strong></summary>
+
+**3️⃣4️⃣ Which TensorFlow feature improves performance?**
 
 A) tf.constant  
 B) tf.function  
@@ -2181,10 +2073,9 @@ C) tf.print
 D) tf.list  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣5️⃣ Dataset.from_tensor_slices is used to?</strong></summary>
+
+**3️⃣5️⃣ Dataset.from_tensor_slices is used to?**
 
 A) Create dataset from tensors  
 B) Plot graphs  
@@ -2192,10 +2083,9 @@ C) Train model directly
 D) Save model  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣6️⃣ The goal of training is to?</strong></summary>
+
+**3️⃣6️⃣ The goal of training is to?**
 
 A) Increase loss  
 B) Minimize loss  
@@ -2203,10 +2093,9 @@ C) Randomize outputs
 D) Freeze model  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣7️⃣ Which function calculates gradients automatically?</strong></summary>
+
+**3️⃣7️⃣ Which function calculates gradients automatically?**
 
 A) tf.constant  
 B) tf.GradientTape  
@@ -2214,10 +2103,9 @@ C) tf.stack
 D) tf.data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣8️⃣ Model parameters in this lab are?</strong></summary>
+
+**3️⃣8️⃣ Model parameters in this lab are?**
 
 A) Images  
 B) Weights and bias  
@@ -2225,10 +2113,9 @@ C) Labels only
 D) Dataset  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣9️⃣ What indicates good training?</strong></summary>
+
+**3️⃣9️⃣ What indicates good training?**
 
 A) Increasing loss  
 B) Decreasing loss  
@@ -2236,10 +2123,9 @@ C) Random loss
 D) Constant loss  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣0️⃣ The main output of a linear regression model is?</strong></summary>
+
+**4️⃣0️⃣ The main output of a linear regression model is?**
 
 A) Class label  
 B) Continuous value  
@@ -2247,7 +2133,7 @@ C) Image
 D) Text  
 
 ✅ **Answer: B**
-</details>
+
 
 ---
 ---
@@ -2403,8 +2289,7 @@ for epoch in range(epochs):
 
 ## ❓ Lab 4 MCQs (40 Questions)
 
-<details>
-<summary><strong>1️⃣ What is the basic unit of a neural network?</strong></summary>
+**1️⃣ What is the basic unit of a neural network?**
 
 A) Dataset  
 B) Neuron  
@@ -2412,10 +2297,9 @@ C) Matrix
 D) Loss function  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣ A neuron computes?</strong></summary>
+
+**2️⃣ A neuron computes?**
 
 A) y = x²  
 B) y = wx + b  
@@ -2423,10 +2307,9 @@ C) y = log(x)
 D) y = sin(x)  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣ What activation function is commonly used in this lab?</strong></summary>
+
+**3️⃣ What activation function is commonly used in this lab?**
 
 A) ReLU  
 B) Sigmoid  
@@ -2434,10 +2317,9 @@ C) Tanh
 D) Softmax  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣ Sigmoid output range is?</strong></summary>
+
+**4️⃣ Sigmoid output range is?**
 
 A) (-∞, ∞)  
 B) (0, 1)  
@@ -2445,10 +2327,9 @@ C) (-1, 1)
 D) (0, 10)  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>5️⃣ Sigmoid formula is?</strong></summary>
+
+**5️⃣ Sigmoid formula is?**
 
 A) 1 / (1 + eˣ)  
 B) 1 / (1 + e⁻ˣ)  
@@ -2456,10 +2337,9 @@ C) eˣ
 D) x²  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>6️⃣ What is the main use of sigmoid?</strong></summary>
+
+**6️⃣ What is the main use of sigmoid?**
 
 A) Sorting  
 B) Probability output  
@@ -2467,10 +2347,9 @@ C) Image resizing
 D) File handling  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>7️⃣ Which logic gate can a single neuron learn easily?</strong></summary>
+
+**7️⃣ Which logic gate can a single neuron learn easily?**
 
 A) XOR  
 B) AND  
@@ -2478,10 +2357,9 @@ C) Complex circuits only
 D) Memory gates  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>8️⃣ Which gate is NOT linearly separable?</strong></summary>
+
+**8️⃣ Which gate is NOT linearly separable?**
 
 A) AND  
 B) OR  
@@ -2489,10 +2367,9 @@ C) XOR
 D) NAND  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>9️⃣ Why can't a single neuron learn XOR?</strong></summary>
+
+**9️⃣ Why can't a single neuron learn XOR?**
 
 A) Too slow  
 B) Not enough data  
@@ -2500,10 +2377,9 @@ C) Not linearly separable
 D) Too many parameters  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>🔟 XOR requires?</strong></summary>
+
+**🔟 XOR requires?**
 
 A) One neuron  
 B) Multiple layers  
@@ -2511,10 +2387,9 @@ C) No training
 D) No activation  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣1️⃣ A neural network is made of?</strong></summary>
+
+**1️⃣1️⃣ A neural network is made of?**
 
 A) Files  
 B) Neurons  
@@ -2522,10 +2397,9 @@ C) Tables
 D) Images  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣2️⃣ What does bias do?</strong></summary>
+
+**1️⃣2️⃣ What does bias do?**
 
 A) Controls output shift  
 B) Removes data  
@@ -2533,10 +2407,9 @@ C) Sorts inputs
 D) Normalizes images  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>1️⃣3️⃣ Which loss function is used?</strong></summary>
+
+**1️⃣3️⃣ Which loss function is used?**
 
 A) Cross entropy  
 B) MSE  
@@ -2544,10 +2417,9 @@ C) Hinge loss
 D) KL divergence  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣4️⃣ MSE stands for?</strong></summary>
+
+**1️⃣4️⃣ MSE stands for?**
 
 A) Mean Signal Error  
 B) Mean Squared Error  
@@ -2555,10 +2427,9 @@ C) Model Score Estimation
 D) Matrix Sum Error  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣5️⃣ MSE measures?</strong></summary>
+
+**1️⃣5️⃣ MSE measures?**
 
 A) Accuracy  
 B) Difference between prediction and target  
@@ -2566,10 +2437,9 @@ C) Data size
 D) Gradient value  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣6️⃣ What is used to compute gradients?</strong></summary>
+
+**1️⃣6️⃣ What is used to compute gradients?**
 
 A) tf.constant  
 B) tf.GradientTape  
@@ -2577,10 +2447,9 @@ C) tf.stack
 D) tf.sigmoid  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣7️⃣ Gradient descent is used to?</strong></summary>
+
+**1️⃣7️⃣ Gradient descent is used to?**
 
 A) Increase loss  
 B) Minimize loss  
@@ -2588,10 +2457,9 @@ C) Shuffle data
 D) Store variables  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣8️⃣ Weight update rule is?</strong></summary>
+
+**1️⃣8️⃣ Weight update rule is?**
 
 A) w = w + gradient  
 B) w = w - learning_rate × gradient  
@@ -2599,10 +2467,9 @@ C) w = random
 D) w = 0  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣9️⃣ A neuron output after sigmoid is?</strong></summary>
+
+**1️⃣9️⃣ A neuron output after sigmoid is?**
 
 A) Always 0  
 B) Always 1  
@@ -2610,10 +2477,9 @@ C) Between 0 and 1
 D) Between -1 and 1  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣0️⃣ AND gate outputs 1 when?</strong></summary>
+
+**2️⃣0️⃣ AND gate outputs 1 when?**
 
 A) Any input is 1  
 B) Both inputs are 1  
@@ -2621,10 +2487,9 @@ C) Inputs are 0
 D) Inputs differ  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣1️⃣ OR gate outputs 1 when?</strong></summary>
+
+**2️⃣1️⃣ OR gate outputs 1 when?**
 
 A) Both inputs are 0  
 B) At least one input is 1  
@@ -2632,10 +2497,9 @@ C) Both inputs are 1
 D) Inputs are negative  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣2️⃣ XOR outputs 1 when?</strong></summary>
+
+**2️⃣2️⃣ XOR outputs 1 when?**
 
 A) Inputs are equal  
 B) Inputs differ  
@@ -2643,10 +2507,9 @@ C) Inputs are both 0
 D) Inputs are both 1  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣3️⃣ A single neuron is also called?</strong></summary>
+
+**2️⃣3️⃣ A single neuron is also called?**
 
 A) Deep model  
 B) Perceptron  
@@ -2654,10 +2517,9 @@ C) CNN
 D) RNN  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣4️⃣ Activation function introduces?</strong></summary>
+
+**2️⃣4️⃣ Activation function introduces?**
 
 A) Linearity  
 B) Non-linearity  
@@ -2665,10 +2527,9 @@ C) Sorting
 D) Noise only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣5️⃣ Without activation function, model becomes?</strong></summary>
+
+**2️⃣5️⃣ Without activation function, model becomes?**
 
 A) Non-linear  
 B) Linear  
@@ -2676,10 +2537,9 @@ C) Random
 D) Deep  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣6️⃣ Multi-layer networks are needed for?</strong></summary>
+
+**2️⃣6️⃣ Multi-layer networks are needed for?**
 
 A) Simple tasks  
 B) Non-linear problems  
@@ -2687,10 +2547,9 @@ C) Sorting only
 D) File reading  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣7️⃣ XOR problem shows?</strong></summary>
+
+**2️⃣7️⃣ XOR problem shows?**
 
 A) Overfitting  
 B) Linear limitation of single neurons  
@@ -2698,10 +2557,9 @@ C) Data imbalance
 D) Memory issue  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣8️⃣ tf.equal() is used for?</strong></summary>
+
+**2️⃣8️⃣ tf.equal() is used for?**
 
 A) Addition  
 B) Comparison  
@@ -2709,10 +2567,9 @@ C) Loss calculation
 D) Training  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣9️⃣ tf.round() does?</strong></summary>
+
+**2️⃣9️⃣ tf.round() does?**
 
 A) Floors values  
 B) Rounds values  
@@ -2720,10 +2577,9 @@ C) Normalizes data
 D) Sorts tensors  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣0️⃣ tf.cast() is used to?</strong></summary>
+
+**3️⃣0️⃣ tf.cast() is used to?**
 
 A) Train model  
 B) Change data type  
@@ -2731,10 +2587,9 @@ C) Plot graphs
 D) Compute loss  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣1️⃣ A neuron is inspired by?</strong></summary>
+
+**3️⃣1️⃣ A neuron is inspired by?**
 
 A) CPU  
 B) Human brain  
@@ -2742,10 +2597,9 @@ C) Database
 D) Compiler  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣2️⃣ Input of neuron is multiplied by?</strong></summary>
+
+**3️⃣2️⃣ Input of neuron is multiplied by?**
 
 A) Bias  
 B) Weight  
@@ -2753,10 +2607,9 @@ C) Loss
 D) Gradient  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣3️⃣ Output of neuron before activation is?</strong></summary>
+
+**3️⃣3️⃣ Output of neuron before activation is?**
 
 A) Random value  
 B) Linear combination  
@@ -2764,10 +2617,9 @@ C) Image
 D) Label  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣4️⃣ Training improves?</strong></summary>
+
+**3️⃣4️⃣ Training improves?**
 
 A) Loss increases  
 B) Loss decreases  
@@ -2775,10 +2627,9 @@ C) Data size
 D) Model randomness  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣5️⃣ Gradient tells?</strong></summary>
+
+**3️⃣5️⃣ Gradient tells?**
 
 A) Direction of improvement  
 B) Data size  
@@ -2786,10 +2637,9 @@ C) Model type
 D) Output label  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣6️⃣ XOR requires?</strong></summary>
+
+**3️⃣6️⃣ XOR requires?**
 
 A) Linear model  
 B) Non-linear model  
@@ -2797,10 +2647,9 @@ C) No model
 D) Random model  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣7️⃣ Neural networks solve XOR using?</strong></summary>
+
+**3️⃣7️⃣ Neural networks solve XOR using?**
 
 A) One layer  
 B) Multiple layers  
@@ -2808,10 +2657,9 @@ C) No activation
 D) Sorting  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣8️⃣ Sigmoid is?</strong></summary>
+
+**3️⃣8️⃣ Sigmoid is?**
 
 A) Linear  
 B) Non-linear  
@@ -2819,10 +2667,9 @@ C) Constant
 D) Random  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣9️⃣ Output of sigmoid is interpreted as?</strong></summary>
+
+**3️⃣9️⃣ Output of sigmoid is interpreted as?**
 
 A) Loss  
 B) Probability  
@@ -2830,10 +2677,9 @@ C) Gradient
 D) Weight  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣0️⃣ Main idea of this lab is?</strong></summary>
+
+**4️⃣0️⃣ Main idea of this lab is?**
 
 A) File handling  
 B) Logic gates using neurons  
@@ -2841,7 +2687,7 @@ C) Image processing
 D) Database design  
 
 ✅ **Answer: B**
-</details>
+
 
 ---
 ---
@@ -2980,8 +2826,7 @@ for epoch in range(epochs):
 
 ## ❓ Lab 5 MCQs (40 Questions)
 
-<details>
-<summary><strong>1️⃣ MNIST dataset is used for?</strong></summary>
+**1️⃣ MNIST dataset is used for?**
 
 A) Text classification  
 B) Image segmentation  
@@ -2989,10 +2834,9 @@ C) Handwritten digit classification
 D) Speech recognition  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣ Each MNIST image size is?</strong></summary>
+
+**2️⃣ Each MNIST image size is?**
 
 A) 16×16  
 B) 28×28  
@@ -3000,10 +2844,9 @@ C) 32×32
 D) 64×64  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣ MNIST labels represent?</strong></summary>
+
+**3️⃣ MNIST labels represent?**
 
 A) Animals  
 B) Digits 0–9  
@@ -3011,10 +2854,9 @@ C) Letters A–Z
 D) Colors  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣ tfds.load() is used to?</strong></summary>
+
+**4️⃣ tfds.load() is used to?**
 
 A) Build models  
 B) Load datasets  
@@ -3022,10 +2864,9 @@ C) Plot graphs
 D) Train optimizer  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>5️⃣ as_supervised=True returns?</strong></summary>
+
+**5️⃣ as_supervised=True returns?**
 
 A) Images only  
 B) Labels only  
@@ -3033,10 +2874,9 @@ C) (input, label) pairs
 D) Random tensors  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>6️⃣ Main purpose of flatten layer?</strong></summary>
+
+**6️⃣ Main purpose of flatten layer?**
 
 A) Increase image size  
 B) Convert 2D to 1D  
@@ -3044,10 +2884,9 @@ C) Normalize data
 D) Add noise  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>7️⃣ Flatten input 28×28 becomes?</strong></summary>
+
+**7️⃣ Flatten input 28×28 becomes?**
 
 A) 28  
 B) 784  
@@ -3055,10 +2894,9 @@ C) 1024
 D) 256  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>8️⃣ A Dense layer computes?</strong></summary>
+
+**8️⃣ A Dense layer computes?**
 
 A) x²  
 B) Wx + b  
@@ -3066,10 +2904,9 @@ C) log(x)
 D) sin(x)  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>9️⃣ Activation function adds?</strong></summary>
+
+**9️⃣ Activation function adds?**
 
 A) Linearity  
 B) Non-linearity  
@@ -3077,10 +2914,9 @@ C) Sorting
 D) Noise  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>🔟 ReLU function is?</strong></summary>
+
+**🔟 ReLU function is?**
 
 A) max(0, x)  
 B) min(0, x)  
@@ -3088,10 +2924,9 @@ C) x²
 D) log(x)  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>1️⃣1️⃣ Softmax outputs?</strong></summary>
+
+**1️⃣1️⃣ Softmax outputs?**
 
 A) Binary values  
 B) Probabilities  
@@ -3099,10 +2934,9 @@ C) Gradients
 D) Loss values  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣2️⃣ Softmax ensures?</strong></summary>
+
+**1️⃣2️⃣ Softmax ensures?**
 
 A) Negative values  
 B) Sum = 1  
@@ -3110,10 +2944,9 @@ C) Sum = 0
 D) Random output  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣3️⃣ Loss function used in this lab?</strong></summary>
+
+**1️⃣3️⃣ Loss function used in this lab?**
 
 A) MSE  
 B) Cross entropy  
@@ -3121,10 +2954,9 @@ C) Hinge loss
 D) MAE  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣4️⃣ Sparse categorical cross entropy is used for?</strong></summary>
+
+**1️⃣4️⃣ Sparse categorical cross entropy is used for?**
 
 A) Regression  
 B) Integer labels  
@@ -3132,10 +2964,9 @@ C) Images only
 D) Clustering  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣5️⃣ Output layer activation is?</strong></summary>
+
+**1️⃣5️⃣ Output layer activation is?**
 
 A) ReLU  
 B) Softmax  
@@ -3143,10 +2974,9 @@ C) Sigmoid
 D) Linear  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣6️⃣ Optimizer used in lab?</strong></summary>
+
+**1️⃣6️⃣ Optimizer used in lab?**
 
 A) SGD only  
 B) Adam  
@@ -3154,10 +2984,9 @@ C) RMSProp only
 D) None  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣7️⃣ Adam optimizer is?</strong></summary>
+
+**1️⃣7️⃣ Adam optimizer is?**
 
 A) Random  
 B) Adaptive learning rate optimizer  
@@ -3165,10 +2994,9 @@ C) Sorting algorithm
 D) Data loader  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣8️⃣ Training goal is to?</strong></summary>
+
+**1️⃣8️⃣ Training goal is to?**
 
 A) Increase loss  
 B) Minimize loss  
@@ -3176,10 +3004,9 @@ C) Randomize weights
 D) Reduce dataset  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣9️⃣ GradientTape is used for?</strong></summary>
+
+**1️⃣9️⃣ GradientTape is used for?**
 
 A) Data loading  
 B) Automatic differentiation  
@@ -3187,10 +3014,9 @@ C) Image resizing
 D) Sorting  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣0️⃣ Gradient descent updates?</strong></summary>
+
+**2️⃣0️⃣ Gradient descent updates?**
 
 A) Data  
 B) Weights  
@@ -3198,10 +3024,9 @@ C) Labels
 D) Images  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣1️⃣ MLP stands for?</strong></summary>
+
+**2️⃣1️⃣ MLP stands for?**
 
 A) Multi Layer Perceptron  
 B) Matrix Linear Process  
@@ -3209,10 +3034,9 @@ C) Multi Label Prediction
 D) Memory Learning Program  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>2️⃣2️⃣ Hidden layers typically use?</strong></summary>
+
+**2️⃣2️⃣ Hidden layers typically use?**
 
 A) Softmax  
 B) ReLU  
@@ -3220,10 +3044,9 @@ C) Argmax
 D) Sigmoid only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣3️⃣ Output layer predicts?</strong></summary>
+
+**2️⃣3️⃣ Output layer predicts?**
 
 A) Images  
 B) Classes  
@@ -3231,10 +3054,9 @@ C) Gradients
 D) Weights  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣4️⃣ argmax returns?</strong></summary>
+
+**2️⃣4️⃣ argmax returns?**
 
 A) Minimum value  
 B) Index of max value  
@@ -3242,10 +3064,9 @@ C) Mean value
 D) Loss  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣5️⃣ argmax(axis=1) means?</strong></summary>
+
+**2️⃣5️⃣ argmax(axis=1) means?**
 
 A) Across rows  
 B) Across columns  
@@ -3253,10 +3074,9 @@ C) Entire tensor
 D) Random axis  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>2️⃣6️⃣ Dataset pipeline includes?</strong></summary>
+
+**2️⃣6️⃣ Dataset pipeline includes?**
 
 A) Train only  
 B) Shuffle and batch  
@@ -3264,10 +3084,9 @@ C) Plot only
 D) Normalize only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣7️⃣ batch() function is used to?</strong></summary>
+
+**2️⃣7️⃣ batch() function is used to?**
 
 A) Resize images  
 B) Group data  
@@ -3275,10 +3094,9 @@ C) Delete data
 D) Sort labels  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣8️⃣ shuffle() function?</strong></summary>
+
+**2️⃣8️⃣ shuffle() function?**
 
 A) Sorts data  
 B) Randomizes order  
@@ -3286,10 +3104,9 @@ C) Deletes samples
 D) Normalizes data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣9️⃣ Model input is?</strong></summary>
+
+**2️⃣9️⃣ Model input is?**
 
 A) 1D vector  
 B) 2D image  
@@ -3297,10 +3114,9 @@ C) Text
 D) Audio only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣0️⃣ First step in model?</strong></summary>
+
+**3️⃣0️⃣ First step in model?**
 
 A) Softmax  
 B) Flatten  
@@ -3308,10 +3124,9 @@ C) Loss
 D) Optimization  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣1️⃣ Neural network learns by?</strong></summary>
+
+**3️⃣1️⃣ Neural network learns by?**
 
 A) Hard coding  
 B) Gradient updates  
@@ -3319,10 +3134,9 @@ C) Random guessing
 D) Sorting data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣2️⃣ Loss measures?</strong></summary>
+
+**3️⃣2️⃣ Loss measures?**
 
 A) Accuracy  
 B) Error  
@@ -3330,10 +3144,9 @@ C) Speed
 D) Memory  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣3️⃣ Backpropagation uses?</strong></summary>
+
+**3️⃣3️⃣ Backpropagation uses?**
 
 A) argmax  
 B) Gradients  
@@ -3341,10 +3154,9 @@ C) Sorting
 D) Convolution  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣4️⃣ Weights represent?</strong></summary>
+
+**3️⃣4️⃣ Weights represent?**
 
 A) Data size  
 B) Importance of inputs  
@@ -3352,10 +3164,9 @@ C) Labels
 D) Loss  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣5️⃣ Bias helps?</strong></summary>
+
+**3️⃣5️⃣ Bias helps?**
 
 A) Shift activation  
 B) Normalize data  
@@ -3363,10 +3174,9 @@ C) Sort data
 D) Delete noise  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣6️⃣ Neural network output is?</strong></summary>
+
+**3️⃣6️⃣ Neural network output is?**
 
 A) Random  
 B) Prediction  
@@ -3374,10 +3184,9 @@ C) Dataset
 D) Image  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣7️⃣ MNIST classification has?</strong></summary>
+
+**3️⃣7️⃣ MNIST classification has?**
 
 A) 2 classes  
 B) 10 classes  
@@ -3385,10 +3194,9 @@ C) 100 classes
 D) 50 classes  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣8️⃣ One-hot encoding is replaced by?</strong></summary>
+
+**3️⃣8️⃣ One-hot encoding is replaced by?**
 
 A) Sparse labels  
 B) Text labels  
@@ -3396,10 +3204,9 @@ C) Images
 D) Noise  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣9️⃣ Training improves?</strong></summary>
+
+**3️⃣9️⃣ Training improves?**
 
 A) Loss increases  
 B) Accuracy increases  
@@ -3407,10 +3214,9 @@ C) Data disappears
 D) Model resets  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣0️⃣ Main goal of Lab 5?</strong></summary>
+
+**4️⃣0️⃣ Main goal of Lab 5?**
 
 A) Image generation  
 B) Digit classification  
@@ -3418,7 +3224,7 @@ C) Speech recognition
 D) Object detection  
 
 ✅ **Answer: B**
-</details>
+
 
 ---
 ---
@@ -3548,8 +3354,7 @@ class_idx   = tf.argmax(predictions, axis=1) # Returns class index
 
 ## ❓ Lab 6 MCQs (40 Questions)
 
-<details>
-<summary><strong>1️⃣ Keras Sequential model is used for?</strong></summary>
+**1️⃣ Keras Sequential model is used for?**
 
 A) Complex graph models  
 B) Linear stack of layers  
@@ -3557,10 +3362,9 @@ C) Databases
 D) Image storage  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣ Sequential model means?</strong></summary>
+
+**2️⃣ Sequential model means?**
 
 A) Random structure  
 B) Layers connected one after another  
@@ -3568,10 +3372,9 @@ C) Parallel networks
 D) No layers  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣ Best use case for Sequential model?</strong></summary>
+
+**3️⃣ Best use case for Sequential model?**
 
 A) CNN with branches  
 B) Simple feedforward networks  
@@ -3579,10 +3382,9 @@ C) Graph models
 D) Reinforcement learning  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣ First layer in Sequential model defines?</strong></summary>
+
+**4️⃣ First layer in Sequential model defines?**
 
 A) Loss  
 B) Input shape  
@@ -3590,10 +3392,9 @@ C) Optimizer
 D) Output  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>5️⃣ keras.Input() is used to?</strong></summary>
+
+**5️⃣ keras.Input() is used to?**
 
 A) Train model  
 B) Define input shape  
@@ -3601,10 +3402,9 @@ C) Normalize data
 D) Compute loss  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>6️⃣ Dense layer is?</strong></summary>
+
+**6️⃣ Dense layer is?**
 
 A) Convolution layer  
 B) Fully connected layer  
@@ -3612,10 +3412,9 @@ C) Pooling layer
 D) Dropout layer  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>7️⃣ Dense layer computes?</strong></summary>
+
+**7️⃣ Dense layer computes?**
 
 A) x²  
 B) Wx + b  
@@ -3623,10 +3422,9 @@ C) log(x)
 D) Sorting  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>8️⃣ Activation function adds?</strong></summary>
+
+**8️⃣ Activation function adds?**
 
 A) Linearity  
 B) Non-linearity  
@@ -3634,10 +3432,9 @@ C) Sorting
 D) Noise only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>9️⃣ ReLU stands for?</strong></summary>
+
+**9️⃣ ReLU stands for?**
 
 A) Random Linear Unit  
 B) Rectified Linear Unit  
@@ -3645,10 +3442,9 @@ C) Regression Linear Unit
 D) Reduced Linear Unit  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>🔟 ReLU function is?</strong></summary>
+
+**🔟 ReLU function is?**
 
 A) max(0, x)  
 B) min(0, x)  
@@ -3656,10 +3452,9 @@ C) x²
 D) log(x)  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>1️⃣1️⃣ Softmax output represents?</strong></summary>
+
+**1️⃣1️⃣ Softmax output represents?**
 
 A) Loss  
 B) Probabilities  
@@ -3667,10 +3462,9 @@ C) Gradients
 D) Images  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣2️⃣ Softmax ensures?</strong></summary>
+
+**1️⃣2️⃣ Softmax ensures?**
 
 A) Negative outputs  
 B) Sum of probabilities = 1  
@@ -3678,10 +3472,9 @@ C) Random output
 D) Zero output  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣3️⃣ MNIST dataset contains?</strong></summary>
+
+**1️⃣3️⃣ MNIST dataset contains?**
 
 A) Images of animals  
 B) Handwritten digits  
@@ -3689,10 +3482,9 @@ C) Text documents
 D) Audio signals  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣4️⃣ MNIST classes are?</strong></summary>
+
+**1️⃣4️⃣ MNIST classes are?**
 
 A) 5  
 B) 10  
@@ -3700,10 +3492,9 @@ C) 100
 D) 2  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣5️⃣ Flatten layer does?</strong></summary>
+
+**1️⃣5️⃣ Flatten layer does?**
 
 A) Expands image  
 B) Converts 2D to 1D  
@@ -3711,10 +3502,9 @@ C) Adds noise
 D) Normalizes labels  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣6️⃣ MNIST image size is?</strong></summary>
+
+**1️⃣6️⃣ MNIST image size is?**
 
 A) 32×32  
 B) 28×28  
@@ -3722,10 +3512,9 @@ C) 64×64
 D) 16×16  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣7️⃣ model.summary() shows?</strong></summary>
+
+**1️⃣7️⃣ model.summary() shows?**
 
 A) Loss values  
 B) Model architecture  
@@ -3733,10 +3522,9 @@ C) Dataset info
 D) Predictions  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣8️⃣ model.compile() is used for?</strong></summary>
+
+**1️⃣8️⃣ model.compile() is used for?**
 
 A) Building dataset  
 B) Configuring training  
@@ -3744,10 +3532,9 @@ C) Plotting graphs
 D) Saving model  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣9️⃣ Loss function used in MNIST?</strong></summary>
+
+**1️⃣9️⃣ Loss function used in MNIST?**
 
 A) MSE  
 B) Cross entropy  
@@ -3755,10 +3542,9 @@ C) MAE
 D) Hinge loss  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣0️⃣ Sparse categorical crossentropy is used for?</strong></summary>
+
+**2️⃣0️⃣ Sparse categorical crossentropy is used for?**
 
 A) Regression  
 B) Integer labels  
@@ -3766,10 +3552,9 @@ C) Images only
 D) Clustering  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣1️⃣ Optimizer commonly used?</strong></summary>
+
+**2️⃣1️⃣ Optimizer commonly used?**
 
 A) SGD only  
 B) Adam  
@@ -3777,10 +3562,9 @@ C) Random optimizer
 D) None  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣2️⃣ model.fit() is used for?</strong></summary>
+
+**2️⃣2️⃣ model.fit() is used for?**
 
 A) Testing model  
 B) Training model  
@@ -3788,10 +3572,9 @@ C) Saving model
 D) Loading dataset  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣3️⃣ model.evaluate() returns?</strong></summary>
+
+**2️⃣3️⃣ model.evaluate() returns?**
 
 A) Dataset  
 B) Loss and accuracy  
@@ -3799,10 +3582,9 @@ C) Weights
 D) Gradients  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣4️⃣ model.predict() gives?</strong></summary>
+
+**2️⃣4️⃣ model.predict() gives?**
 
 A) Labels only  
 B) Probabilities  
@@ -3810,10 +3592,9 @@ C) Loss
 D) Gradients  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣5️⃣ argmax is used to?</strong></summary>
+
+**2️⃣5️⃣ argmax is used to?**
 
 A) Find minimum  
 B) Find class index  
@@ -3821,10 +3602,9 @@ C) Normalize data
 D) Train model  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣6️⃣ argmax returns?</strong></summary>
+
+**2️⃣6️⃣ argmax returns?**
 
 A) Value  
 B) Index  
@@ -3832,10 +3612,9 @@ C) Loss
 D) Image  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣7️⃣ Input to model must be?</strong></summary>
+
+**2️⃣7️⃣ Input to model must be?**
 
 A) String  
 B) Tensor  
@@ -3843,10 +3622,9 @@ C) File
 D) Image only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣8️⃣ Hidden layers usually use?</strong></summary>
+
+**2️⃣8️⃣ Hidden layers usually use?**
 
 A) Softmax  
 B) ReLU  
@@ -3854,10 +3632,9 @@ C) Argmax
 D) Loss  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣9️⃣ Output layer for MNIST uses?</strong></summary>
+
+**2️⃣9️⃣ Output layer for MNIST uses?**
 
 A) ReLU  
 B) Softmax  
@@ -3865,10 +3642,9 @@ C) Sigmoid
 D) Linear  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣0️⃣ Training goal is?</strong></summary>
+
+**3️⃣0️⃣ Training goal is?**
 
 A) Increase loss  
 B) Minimize loss  
@@ -3876,10 +3652,9 @@ C) Shuffle data
 D) Delete data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣1️⃣ Backpropagation uses?</strong></summary>
+
+**3️⃣1️⃣ Backpropagation uses?**
 
 A) Gradients  
 B) Sorting  
@@ -3887,10 +3662,9 @@ C) Random values
 D) Images  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣2️⃣ Weights represent?</strong></summary>
+
+**3️⃣2️⃣ Weights represent?**
 
 A) Output labels  
 B) Importance of features  
@@ -3898,10 +3672,9 @@ C) Loss values
 D) Images  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣3️⃣ Bias helps?</strong></summary>
+
+**3️⃣3️⃣ Bias helps?**
 
 A) Shift activation  
 B) Normalize data  
@@ -3909,10 +3682,9 @@ C) Delete data
 D) Sort inputs  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣4️⃣ Learning improves?</strong></summary>
+
+**3️⃣4️⃣ Learning improves?**
 
 A) Accuracy  
 B) Data size  
@@ -3920,10 +3692,9 @@ C) Image resolution
 D) Memory  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣5️⃣ Each MNIST prediction gives?</strong></summary>
+
+**3️⃣5️⃣ Each MNIST prediction gives?**
 
 A) One value  
 B) 10 probabilities  
@@ -3931,10 +3702,9 @@ C) 28 values
 D) Random output  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣6️⃣ Sequential model is?</strong></summary>
+
+**3️⃣6️⃣ Sequential model is?**
 
 A) Graph model  
 B) Stack of layers  
@@ -3942,10 +3712,9 @@ C) Tree model
 D) Database  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣7️⃣ Training uses?</strong></summary>
+
+**3️⃣7️⃣ Training uses?**
 
 A) Forward only  
 B) Forward + backward pass  
@@ -3953,10 +3722,9 @@ C) Sorting
 D) Clustering  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣8️⃣ Loss measures?</strong></summary>
+
+**3️⃣8️⃣ Loss measures?**
 
 A) Accuracy  
 B) Error  
@@ -3964,10 +3732,9 @@ C) Speed
 D) Memory  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣9️⃣ MNIST classification type?</strong></summary>
+
+**3️⃣9️⃣ MNIST classification type?**
 
 A) Regression  
 B) Multi-class classification  
@@ -3975,10 +3742,9 @@ C) Clustering
 D) Detection  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣0️⃣ Main goal of Lab 6?</strong></summary>
+
+**4️⃣0️⃣ Main goal of Lab 6?**
 
 A) Image generation  
 B) Build MNIST classifier using Keras  
@@ -3986,7 +3752,7 @@ C) Object detection
 D) Text classification  
 
 ✅ **Answer: B**
-</details>
+
 
 ---
 ---
@@ -4181,8 +3947,7 @@ predictions = model.predict(new_image)
 
 ## ❓ Lab 7 MCQs (40 Questions)
 
-<details>
-<summary><strong>1️⃣ CIFAR-10 dataset contains how many classes?</strong></summary>
+**1️⃣ CIFAR-10 dataset contains how many classes?**
 
 A) 5  
 B) 10  
@@ -4190,10 +3955,9 @@ C) 100
 D) 20  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣ Each CIFAR-10 image size is?</strong></summary>
+
+**2️⃣ Each CIFAR-10 image size is?**
 
 A) 28×28  
 B) 64×64  
@@ -4201,10 +3965,9 @@ C) 32×32
 D) 128×128  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣ CIFAR-10 images are?</strong></summary>
+
+**3️⃣ CIFAR-10 images are?**
 
 A) Grayscale  
 B) RGB color images  
@@ -4212,10 +3975,9 @@ C) Binary images
 D) Text images  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣ CIFAR-10 is mainly used for?</strong></summary>
+
+**4️⃣ CIFAR-10 is mainly used for?**
 
 A) NLP  
 B) Image classification  
@@ -4223,10 +3985,9 @@ C) Speech recognition
 D) Reinforcement learning  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>5️⃣ CIFAR-10 dataset has approximately?</strong></summary>
+
+**5️⃣ CIFAR-10 dataset has approximately?**
 
 A) 10,000 images  
 B) 50,000 images  
@@ -4234,10 +3995,9 @@ C) 60,000 images
 D) 1 million images  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>6️⃣ Which of the following is NOT a CIFAR-10 class?</strong></summary>
+
+**6️⃣ Which of the following is NOT a CIFAR-10 class?**
 
 A) Cat  
 B) Dog  
@@ -4245,10 +4005,9 @@ C) Car
 D) Lion  
 
 ✅ **Answer: D**
-</details>
 
-<details>
-<summary><strong>7️⃣ CIFAR-10 images are typically used in?</strong></summary>
+
+**7️⃣ CIFAR-10 images are typically used in?**
 
 A) CNN models  
 B) RNN models  
@@ -4256,10 +4015,9 @@ C) LSTM models
 D) GAN only  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>8️⃣ Input shape of CIFAR-10 images is usually?</strong></summary>
+
+**8️⃣ Input shape of CIFAR-10 images is usually?**
 
 A) (28, 28, 1)  
 B) (32, 32, 3)  
@@ -4267,10 +4025,9 @@ C) (64, 64, 1)
 D) (10, 10, 3)  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>9️⃣ Conv2D layer is used for?</strong></summary>
+
+**9️⃣ Conv2D layer is used for?**
 
 A) Text processing  
 B) Feature extraction from images  
@@ -4278,10 +4035,9 @@ C) Sorting data
 D) Normalization only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>🔟 MaxPooling is used to?</strong></summary>
+
+**🔟 MaxPooling is used to?**
 
 A) Increase image size  
 B) Reduce spatial dimensions  
@@ -4289,10 +4045,9 @@ C) Add noise
 D) Convert labels  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣1️⃣ Flatten layer converts?</strong></summary>
+
+**1️⃣1️⃣ Flatten layer converts?**
 
 A) 1D → 2D  
 B) 2D → 1D  
@@ -4300,10 +4055,9 @@ C) RGB → grayscale
 D) Labels → images  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣2️⃣ CNN is especially good for?</strong></summary>
+
+**1️⃣2️⃣ CNN is especially good for?**
 
 A) Tabular data  
 B) Image data  
@@ -4311,10 +4065,9 @@ C) Audio only
 D) Text only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣3️⃣ Conv2D learns?</strong></summary>
+
+**1️⃣3️⃣ Conv2D learns?**
 
 A) Weights manually  
 B) Filters automatically  
@@ -4322,10 +4075,9 @@ C) Labels
 D) Loss only  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣4️⃣ Pooling layer helps in?</strong></summary>
+
+**1️⃣4️⃣ Pooling layer helps in?**
 
 A) Overfitting  
 B) Feature reduction  
@@ -4333,10 +4085,9 @@ C) Increasing noise
 D) Label encoding  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣5️⃣ MaxPooling selects?</strong></summary>
+
+**1️⃣5️⃣ MaxPooling selects?**
 
 A) Average value  
 B) Minimum value  
@@ -4344,10 +4095,9 @@ C) Maximum value
 D) Random value  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>1️⃣6️⃣ CNN first learns?</strong></summary>
+
+**1️⃣6️⃣ CNN first learns?**
 
 A) Shapes  
 B) Edges  
@@ -4355,10 +4105,9 @@ C) Labels
 D) Loss  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣7️⃣ Flatten layer is required before?</strong></summary>
+
+**1️⃣7️⃣ Flatten layer is required before?**
 
 A) Conv layer  
 B) Dense layer  
@@ -4366,10 +4115,9 @@ C) Pooling layer
 D) Input layer  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣8️⃣ CNN stands for?</strong></summary>
+
+**1️⃣8️⃣ CNN stands for?**
 
 A) Central Neural Network  
 B) Convolutional Neural Network  
@@ -4377,10 +4125,9 @@ C) Core Neural Node
 D) Complex Numeric Network  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>1️⃣9️⃣ Keras Sequential model is?</strong></summary>
+
+**1️⃣9️⃣ Keras Sequential model is?**
 
 A) Graph-based model  
 B) Linear stack of layers  
@@ -4388,10 +4135,9 @@ C) Tree model
 D) Rule-based system  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣0️⃣ First layer in CNN must define?</strong></summary>
+
+**2️⃣0️⃣ First layer in CNN must define?**
 
 A) Loss  
 B) Input shape  
@@ -4399,10 +4145,9 @@ C) Optimizer
 D) Labels  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣1️⃣ Softmax activation is used for?</strong></summary>
+
+**2️⃣1️⃣ Softmax activation is used for?**
 
 A) Regression  
 B) Classification probabilities  
@@ -4410,10 +4155,9 @@ C) Feature extraction
 D) Pooling  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣2️⃣ ReLU activation outputs?</strong></summary>
+
+**2️⃣2️⃣ ReLU activation outputs?**
 
 A) Negative values only  
 B) 0 or positive values  
@@ -4421,10 +4165,9 @@ C) Only 1 and 0
 D) Probabilities  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣3️⃣ model.compile() is used to?</strong></summary>
+
+**2️⃣3️⃣ model.compile() is used to?**
 
 A) Build model layers  
 B) Train model  
@@ -4432,10 +4175,9 @@ C) Configure training
 D) Predict output  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣4️⃣ model.fit() is used to?</strong></summary>
+
+**2️⃣4️⃣ model.fit() is used to?**
 
 A) Train model  
 B) Test model  
@@ -4443,10 +4185,9 @@ C) Save model
 D) Compile model  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>2️⃣5️⃣ model.evaluate() is used to?</strong></summary>
+
+**2️⃣5️⃣ model.evaluate() is used to?**
 
 A) Train model  
 B) Test model  
@@ -4454,10 +4195,9 @@ C) Build model
 D) Predict labels  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣6️⃣ model.predict() is used for?</strong></summary>
+
+**2️⃣6️⃣ model.predict() is used for?**
 
 A) Training  
 B) Evaluation  
@@ -4465,10 +4205,9 @@ C) Inference
 D) Compilation  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣7️⃣ Loss function in CIFAR-10 is usually?</strong></summary>
+
+**2️⃣7️⃣ Loss function in CIFAR-10 is usually?**
 
 A) MSE  
 B) MAE  
@@ -4476,10 +4215,9 @@ C) Cross-entropy
 D) Hinge loss  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>2️⃣8️⃣ Optimizer commonly used is?</strong></summary>
+
+**2️⃣8️⃣ Optimizer commonly used is?**
 
 A) SGD only  
 B) Adam  
@@ -4487,10 +4225,9 @@ C) Random
 D) None  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>2️⃣9️⃣ Data augmentation helps to?</strong></summary>
+
+**2️⃣9️⃣ Data augmentation helps to?**
 
 A) Increase dataset size artificially  
 B) Reduce model size  
@@ -4498,10 +4235,9 @@ C) Remove labels
 D) Remove images  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣0️⃣ Which is NOT an augmentation technique?</strong></summary>
+
+**3️⃣0️⃣ Which is NOT an augmentation technique?**
 
 A) Rotation  
 B) Flipping  
@@ -4509,10 +4245,9 @@ C) Normalization
 D) Shuffling labels  
 
 ✅ **Answer: D**
-</details>
 
-<details>
-<summary><strong>3️⃣1️⃣ ImageDataGenerator is used for?</strong></summary>
+
+**3️⃣1️⃣ ImageDataGenerator is used for?**
 
 A) Model saving  
 B) Real-time augmentation  
@@ -4520,10 +4255,9 @@ C) Loss calculation
 D) Feature extraction  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣2️⃣ Horizontal flip means?</strong></summary>
+
+**3️⃣2️⃣ Horizontal flip means?**
 
 A) Rotate image  
 B) Flip left-right  
@@ -4531,10 +4265,9 @@ C) Flip up-down
 D) Crop image  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣3️⃣ Augmentation helps prevent?</strong></summary>
+
+**3️⃣3️⃣ Augmentation helps prevent?**
 
 A) Underfitting  
 B) Overfitting  
@@ -4542,10 +4275,9 @@ C) Training
 D) Evaluation  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣4️⃣ Zooming is used to?</strong></summary>
+
+**3️⃣4️⃣ Zooming is used to?**
 
 A) Remove images  
 B) Change image scale  
@@ -4553,10 +4285,9 @@ C) Convert labels
 D) Normalize data  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣5️⃣ CNN learns features in order?</strong></summary>
+
+**3️⃣5️⃣ CNN learns features in order?**
 
 A) Random → shapes → edges  
 B) Edges → textures → shapes  
@@ -4564,10 +4295,9 @@ C) Shapes → edges → labels
 D) Labels → edges → textures  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣6️⃣ CNN is inspired by?</strong></summary>
+
+**3️⃣6️⃣ CNN is inspired by?**
 
 A) Human brain visual cortex  
 B) Database systems  
@@ -4575,10 +4305,9 @@ C) Sorting algorithms
 D) Decision trees  
 
 ✅ **Answer: A**
-</details>
 
-<details>
-<summary><strong>3️⃣7️⃣ CIFAR-10 output layer has?</strong></summary>
+
+**3️⃣7️⃣ CIFAR-10 output layer has?**
 
 A) 2 neurons  
 B) 5 neurons  
@@ -4586,10 +4315,9 @@ C) 10 neurons
 D) 100 neurons  
 
 ✅ **Answer: C**
-</details>
 
-<details>
-<summary><strong>3️⃣8️⃣ One-hot encoding converts?</strong></summary>
+
+**3️⃣8️⃣ One-hot encoding converts?**
 
 A) Images → numbers  
 B) Labels → vectors  
@@ -4597,10 +4325,9 @@ C) Pixels → labels
 D) Loss → accuracy  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>3️⃣9️⃣ CNN reduces parameters using?</strong></summary>
+
+**3️⃣9️⃣ CNN reduces parameters using?**
 
 A) Fully connected layers  
 B) Weight sharing  
@@ -4608,10 +4335,9 @@ C) Random weights
 D) Label smoothing  
 
 ✅ **Answer: B**
-</details>
 
-<details>
-<summary><strong>4️⃣0️⃣ Main advantage of CNN over Dense network is?</strong></summary>
+
+**4️⃣0️⃣ Main advantage of CNN over Dense network is?**
 
 A) Faster text processing  
 B) Better image feature learning  
@@ -4619,7 +4345,1335 @@ C) Lower memory always
 D) No training needed  
 
 ✅ **Answer: B**
-</details>
+
+
+---
+---
+
+---
+---
+
+# 🟣 Lab 8: Transfer Learning with DenseNet121 (CIFAR-10)
+
+> Instead of training from scratch, **reuse a model pre-trained on ImageNet** and adapt it to CIFAR-10 — saving time, compute, and achieving higher accuracy.
+
+![Transfer Learning](https://img.shields.io/badge/Technique-Transfer%20Learning-purple?style=for-the-badge)
+![DenseNet121](https://img.shields.io/badge/Model-DenseNet121-blueviolet?style=for-the-badge)
+![Keras](https://img.shields.io/badge/API-Keras-red?style=for-the-badge&logo=keras&logoColor=white)
+
+---
+
+## 🧠 Lab Summary
+
+| Component | Detail |
+|-----------|--------|
+| 🏗️ Base Model | DenseNet121 (pre-trained on ImageNet) |
+| 📊 Dataset | CIFAR-10 (32×32 RGB, 10 classes) |
+| 🎯 Strategies | Feature Extraction, Fine-Tuning |
+| 📉 Loss | Categorical Cross-Entropy |
+| ⚙️ Optimizer | Adam |
+
+---
+
+## 🔄 What is Transfer Learning?
+
+Transfer Learning reuses a model already trained on a large dataset (ImageNet) and adapts it to a new task.
+
+```
+Without Transfer Learning:  Train from random weights  →  Slow, needs huge data
+With Transfer Learning:     Reuse ImageNet weights    →  Fast, fewer data needed
+```
+
+**Benefits:**
+
+| Benefit | Description |
+|---------|-------------|
+| ⏱️ Saves time | No need to train deep layers from scratch |
+| 💻 Saves compute | Fewer epochs needed |
+| 📈 Better accuracy | Pre-trained features are already powerful |
+
+The pre-trained model already knows: edges → textures → shapes → objects.  
+We only teach it: **the 10 new CIFAR-10 classes**.
+
+---
+
+## 🏗️ What is DenseNet121?
+
+**DenseNet = Dense Convolutional Network**
+
+Key idea: **every layer connects to all previous layers** (not just the one before).
+
+```
+Layer 1 → Layer 2
+Layer 1 → Layer 3
+Layer 1 → Layer 2 → Layer 3
+```
+
+| Advantage | Description |
+|-----------|-------------|
+| Better feature reuse | Each layer sees all previous outputs |
+| Stronger gradient flow | Prevents vanishing gradient |
+| Fewer parameters | Efficient use of features |
+
+### Loading DenseNet121
+
+```python
+base_model = tf.keras.applications.DenseNet121(
+    include_top=False,       # Remove ImageNet classifier (1000 classes)
+    weights='imagenet',      # Load pre-trained ImageNet weights
+    input_shape=(32, 32, 3)  # CIFAR-10 image size
+)
+```
+
+| Parameter | Meaning |
+|-----------|---------|
+| `include_top=False` | Remove original 1000-class head |
+| `weights='imagenet'` | Use pre-trained weights |
+| `weights=None` | Random initialization (from scratch) |
+| `input_shape=(32,32,3)` | CIFAR-10 RGB image dimensions |
+
+---
+
+## 🔒 Feature Extraction Strategy
+
+**Freeze** all pre-trained layers → train only the new classification head.
+
+```python
+base_model.trainable = False   # Freeze all DenseNet layers
+```
+
+### Adding a Custom Classification Head
+
+```python
+model = keras.Sequential([
+    base_model,
+    layers.GlobalAveragePooling2D(),   # Feature maps → vector
+    layers.Dense(128, activation='relu'),
+    layers.Dense(10, activation='softmax')
+])
+```
+
+### What is GlobalAveragePooling2D?
+
+Converts feature maps into a 1D vector by averaging each feature map spatially.
+
+```
+Input:   (batch, 4, 4, 8)  →  Feature maps
+Output:  (batch, 8)         →  One value per channel
+```
+
+| Layer | Purpose |
+|-------|---------|
+| `GlobalAveragePooling2D` | Reduce 2D maps → 1D vector |
+| `Dense(128, relu)` | Learn CIFAR-specific patterns |
+| `Dense(10, softmax)` | Output 10 class probabilities |
+
+---
+
+## 🔥 Fine-Tuning
+
+After training the classifier head, **unfreeze some (or all) pre-trained layers** and continue training with a very small learning rate.
+
+```python
+# Unfreeze all layers
+base_model.trainable = True
+
+# Or unfreeze only later layers
+for layer in base_model.layers[:100]:
+    layer.trainable = False   # Freeze early layers
+
+for layer in base_model.layers[100:]:
+    layer.trainable = True    # Unfreeze later layers
+
+# Use very small learning rate
+optimizer = tf.keras.optimizers.Adam(1e-5)
+```
+
+**Why small learning rate?**
+```
+✔ Prevents destroying the pre-trained knowledge
+✔ Makes small targeted adjustments
+```
+
+### Why freeze early layers?
+
+| Layer Type | Learns | Keep? |
+|------------|--------|-------|
+| Early CNN layers | General edges & textures | ✅ Keep frozen |
+| Later CNN layers | Dataset-specific shapes | 🔥 Fine-tune |
+| Classifier head | New class labels | 🔥 Train |
+
+---
+
+## 📊 Three Training Strategies
+
+| Strategy | What Happens | Speed | Accuracy |
+|----------|-------------|-------|----------|
+| **Feature Extraction** | Freeze base, train head only | ⚡ Fast | Good |
+| **Fine-Tuning** | Unfreeze some layers, continue training | Medium | Better ✅ |
+| **From Scratch** | Train everything randomly | 🐢 Slow | Needs lots of data |
+
+---
+
+## ⚙️ Training Process
+
+```python
+# Compile
+model.compile(
+    optimizer='adam',
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+# Train (Feature Extraction)
+model.fit(train_images, train_labels, epochs=5)
+
+# Evaluate
+model.evaluate(test_images, test_labels)
+```
+
+---
+
+## 🎯 Key Takeaways — Lab 8
+
+```
+✔ Transfer learning = reuse ImageNet knowledge for a new task
+✔ include_top=False = remove old 1000-class head
+✔ weights='imagenet' = load pre-trained weights
+✔ base_model.trainable=False = freeze (feature extraction)
+✔ GlobalAveragePooling2D = bridge between base and classifier
+✔ Fine-tuning = unfreeze + low learning rate
+✔ Early layers = general features (keep frozen)
+✔ Later layers = task-specific (fine-tune)
+```
+
+---
+
+## ❓ Lab 8 MCQs (40 Questions)
+
+**Q1. What is the main goal of transfer learning?**
+
+A) Delete model weights  
+B) Reuse knowledge from a pre-trained model  
+C) Reduce image size  
+D) Increase dataset labels  
+
+✅ **Answer: B**
+
+---
+
+**Q2. Which pre-trained model was used in this lab?**
+
+A) AlexNet  
+B) VGG16  
+C) DenseNet121  
+D) LeNet  
+
+✅ **Answer: C**
+
+---
+
+**Q3. DenseNet121 is pre-trained on which dataset?**
+
+A) CIFAR-10  
+B) MNIST  
+C) Fashion-MNIST  
+D) ImageNet  
+
+✅ **Answer: D**
+
+---
+
+**Q4. What does include_top=False mean?**
+
+A) Remove convolution layers  
+B) Remove pooling layers  
+C) Remove the original classifier head  
+D) Freeze all layers  
+
+✅ **Answer: C**
+
+---
+
+**Q5. Why do we use include_top=False in transfer learning?**
+
+A) To add a custom classifier  
+B) To reduce image size  
+C) To remove activations  
+D) To normalize data  
+
+✅ **Answer: A**
+
+---
+
+**Q6. What is the purpose of freezing layers?**
+
+A) Increase batch size  
+B) Prevent weight updates  
+C) Remove gradients  
+D) Duplicate layers  
+
+✅ **Answer: B**
+
+---
+
+**Q7. Which attribute freezes a model layer?**
+
+A) layer.freeze=True  
+B) layer.fixed=True  
+C) layer.trainable=False  
+D) layer.stop=True  
+
+✅ **Answer: C**
+
+---
+
+**Q8. Feature extraction means?**
+
+A) Training the whole model from scratch  
+B) Freezing the base model and training only the classifier  
+C) Removing convolution layers  
+D) Using only pooling layers  
+
+✅ **Answer: B**
+
+---
+
+**Q9. Fine-tuning means?**
+
+A) Freezing all layers forever  
+B) Training only the output layer  
+C) Unfreezing some layers and continuing training  
+D) Removing DenseNet layers  
+
+✅ **Answer: C**
+
+---
+
+**Q10. Why is a low learning rate used during fine-tuning?**
+
+A) To prevent destroying learned features  
+B) To increase overfitting  
+C) To reduce epochs  
+D) To remove gradients  
+
+✅ **Answer: A**
+
+---
+
+**Q11. Which dataset was used in this lab?**
+
+A) MNIST  
+B) CIFAR-10  
+C) COCO  
+D) Fashion-MNIST  
+
+✅ **Answer: B**
+
+---
+
+**Q12. CIFAR-10 images have how many color channels?**
+
+A) 1  
+B) 2  
+C) 3  
+D) 4  
+
+✅ **Answer: C**
+
+---
+
+**Q13. What is the image size in CIFAR-10?**
+
+A) 28×28  
+B) 64×64  
+C) 32×32  
+D) 128×128  
+
+✅ **Answer: C**
+
+---
+
+**Q14. Which layer converts feature maps into a vector by averaging spatial dimensions?**
+
+A) Flatten  
+B) Conv2D  
+C) GlobalAveragePooling2D  
+D) MaxPooling2D  
+
+✅ **Answer: C**
+
+---
+
+**Q15. The output shape of GlobalAveragePooling2D keeps?**
+
+A) Width and height only  
+B) Channels only  
+C) Batch size only  
+D) Pixels only  
+
+✅ **Answer: B**
+
+---
+
+**Q16. Which parameter loads ImageNet weights?**
+
+A) weights='imagenet'  
+B) dataset='imagenet'  
+C) model='imagenet'  
+D) train='imagenet'  
+
+✅ **Answer: A**
+
+---
+
+**Q17. What happens if weights=None?**
+
+A) Pre-trained weights are loaded  
+B) Random initialization is used  
+C) Model freezes automatically  
+D) Images are normalized  
+
+✅ **Answer: B**
+
+---
+
+**Q18. Transfer learning is especially useful when?**
+
+A) Dataset is small  
+B) Dataset is extremely large  
+C) No GPU exists  
+D) Using text data only  
+
+✅ **Answer: A**
+
+---
+
+**Q19. Which layer is commonly added after DenseNet base?**
+
+A) Conv3D  
+B) GlobalAveragePooling2D  
+C) Embedding  
+D) LSTM  
+
+✅ **Answer: B**
+
+---
+
+**Q20. Which activation is commonly used for CIFAR-10 output layer?**
+
+A) ReLU  
+B) Tanh  
+C) Softmax  
+D) Sigmoid  
+
+✅ **Answer: C**
+
+---
+
+**Q21. CIFAR-10 contains how many classes?**
+
+A) 5  
+B) 8  
+C) 10  
+D) 100  
+
+✅ **Answer: C**
+
+---
+
+**Q22. What is the purpose of the classifier head?**
+
+A) Feature extraction  
+B) Predict final classes  
+C) Normalize images  
+D) Resize input  
+
+✅ **Answer: B**
+
+---
+
+**Q23. Which statement about DenseNet is true?**
+
+A) Layers are disconnected  
+B) Layers are densely connected  
+C) Uses no convolutions  
+D) Has only one layer  
+
+✅ **Answer: B**
+
+---
+
+**Q24. Fine-tuning all layers may cause?**
+
+A) Faster convergence only  
+B) Overfitting if dataset is small  
+C) No gradients  
+D) No learning  
+
+✅ **Answer: B**
+
+---
+
+**Q25. What does model.trainable=False do?**
+
+A) Deletes weights  
+B) Freezes the entire model  
+C) Changes activation functions  
+D) Increases image resolution  
+
+✅ **Answer: B**
+
+---
+
+**Q26. Which optimizer is commonly used in transfer learning?**
+
+A) Adam  
+B) Bubble Sort  
+C) DFS  
+D) BFS  
+
+✅ **Answer: A**
+
+---
+
+**Q27. During feature extraction, which layers are trained?**
+
+A) All DenseNet layers  
+B) Only newly added classifier layers  
+C) No layers  
+D) Only pooling layers  
+
+✅ **Answer: B**
+
+---
+
+**Q28. Fine-tuning starts after?**
+
+A) Data normalization  
+B) Feature extraction training  
+C) Removing DenseNet  
+D) Deleting classifier head  
+
+✅ **Answer: B**
+
+---
+
+**Q29. Why compare validation accuracy between strategies?**
+
+A) To check model performance  
+B) To resize images  
+C) To freeze data  
+D) To remove labels  
+
+✅ **Answer: A**
+
+---
+
+**Q30. Which layer reduces overfitting by randomly dropping neurons?**
+
+A) Dense  
+B) Conv2D  
+C) Dropout  
+D) Flatten  
+
+✅ **Answer: C**
+
+---
+
+**Q31. What is the main advantage of transfer learning?**
+
+A) Requires no data  
+B) Faster training and better accuracy  
+C) Removes CNN layers  
+D) Prevents gradients  
+
+✅ **Answer: B**
+
+---
+
+**Q32. Which type of learning trains the whole model from scratch?**
+
+A) Feature extraction  
+B) Fine-tuning  
+C) Random initialization training  
+D) Freezing  
+
+✅ **Answer: C**
+
+---
+
+**Q33. In custom freezing, early layers are usually?**
+
+A) Deleted  
+B) Frozen  
+C) Randomized  
+D) Flattened  
+
+✅ **Answer: B**
+
+---
+
+**Q34. Why freeze early layers?**
+
+A) They learn general features  
+B) They reduce dataset size  
+C) They remove gradients  
+D) They classify directly  
+
+✅ **Answer: A**
+
+---
+
+**Q35. Which of the following is NOT a transfer learning strategy?**
+
+A) Feature extraction  
+B) Fine-tuning  
+C) Training from scratch  
+D) K-means clustering  
+
+✅ **Answer: D**
+
+---
+
+**Q36. What does input_shape=(32,32,3) represent?**
+
+A) Width only  
+B) Height only  
+C) RGB image dimensions  
+D) Number of classes  
+
+✅ **Answer: C**
+
+---
+
+**Q37. DenseNet121 belongs to which model type?**
+
+A) Recurrent Neural Network  
+B) Convolutional Neural Network  
+C) Decision Tree  
+D) Transformer only  
+
+✅ **Answer: B**
+
+---
+
+**Q38. What is the output of GlobalAveragePooling2D for shape (1,4,4,8)?**
+
+A) (1,4,4)  
+B) (1,8)  
+C) (4,4,8)  
+D) (8,8)  
+
+✅ **Answer: B**
+
+---
+
+**Q39. Why use pre-trained ImageNet weights?**
+
+A) They already learned useful visual features  
+B) They reduce image size  
+C) They remove labels  
+D) They disable training  
+
+✅ **Answer: A**
+
+---
+
+**Q40. Which statement best describes transfer learning?**
+
+A) Reusing a trained model for a new task  
+B) Training without labels  
+C) Using only linear regression  
+D) Removing neural networks  
+
+✅ **Answer: A**
+
+---
+---
+
+# ⚫ Lab 9: LSTM on 20 Newsgroups Dataset
+
+> Use **LSTM** and **Bidirectional LSTM** networks to classify news articles from the **20 Newsgroups** dataset — a complete NLP pipeline from raw text to predictions.
+
+![NLP](https://img.shields.io/badge/Task-NLP%20Classification-black?style=for-the-badge)
+![LSTM](https://img.shields.io/badge/Model-LSTM%20%2F%20BiLSTM-darkblue?style=for-the-badge)
+![Keras](https://img.shields.io/badge/API-Keras-red?style=for-the-badge&logo=keras&logoColor=white)
+
+---
+
+## 🧠 Lab Summary
+
+| Component | Detail |
+|-----------|--------|
+| 📰 Dataset | 20 Newsgroups (thousands of text articles) |
+| 🎯 Task | Multi-class text classification (20 categories) |
+| 🧠 Model | LSTM / Bidirectional LSTM |
+| 📉 Loss | Categorical Cross-Entropy |
+| ⚙️ Optimizer | Adam |
+
+---
+
+## 📰 20 Newsgroups Dataset
+
+A collection of ~18,000 news articles divided into **20 categories**:
+
+| Category | Examples |
+|----------|---------|
+| ⚽ Sports | Baseball, hockey |
+| 🏛️ Politics | Government, guns |
+| 💻 Technology | Hardware, software |
+| 🔬 Science | Medicine, space |
+| ⛪ Religion | Christianity, atheism |
+
+```python
+from sklearn.datasets import fetch_20newsgroups
+
+data = fetch_20newsgroups(subset='train')
+# Returns: text articles + integer labels
+```
+
+---
+
+## 🔤 Text Preprocessing
+
+Neural networks cannot understand raw text — we must convert words to numbers.
+
+### Step 1 — Tokenization
+
+Convert words → unique integers.
+
+```python
+from keras.preprocessing.text import Tokenizer
+
+tokenizer = Tokenizer(
+    num_words=5000,       # Keep only top 5000 frequent words
+    oov_token="<unk>"    # Replace unknown words with this token
+)
+tokenizer.fit_on_texts(texts)
+
+print(tokenizer.word_index)
+# {'hello': 1, 'world': 2, 'keras': 3, ...}
+```
+
+### Step 2 — Convert to Sequences
+
+```python
+sequences = tokenizer.texts_to_sequences(texts)
+# "hello world" → [1, 2]
+```
+
+### Step 3 — Padding
+
+All sequences must be the **same length** for batching.
+
+```python
+from keras.preprocessing.sequence import pad_sequences
+
+padded = pad_sequences(
+    sequences,
+    maxlen=100,          # Max sequence length
+    padding='post',      # Add zeros AFTER sequence
+    truncating='post'    # Cut long sequences from the END
+)
+# [1, 2, 3] → [1, 2, 3, 0, 0]  (maxlen=5)
+```
+
+| Parameter | Options | Effect |
+|-----------|---------|--------|
+| `padding` | `'pre'` / `'post'` | Zeros before / after |
+| `truncating` | `'pre'` / `'post'` | Cut from start / end |
+| `maxlen` | integer | Fixed sequence length |
+
+### Step 4 — Label Encoding
+
+```python
+from sklearn.preprocessing import LabelBinarizer
+
+lb = LabelBinarizer()
+y = lb.fit_transform(labels)
+# Sports → [1, 0, 0, ...]   Politics → [0, 1, 0, ...]
+```
+
+---
+
+## 📦 Embedding Layer
+
+Transforms integer word IDs into **dense semantic vectors**.
+
+```
+word ID: 5  →  [0.2, 0.7, -0.1, 0.5, ...]   (128-dim vector)
+```
+
+```python
+layers.Embedding(
+    input_dim=5000,      # Vocabulary size
+    output_dim=128,      # Embedding vector size (each word → 128 values)
+    input_length=100     # Sequence length
+)
+```
+
+| Parameter | Meaning |
+|-----------|---------|
+| `input_dim` | Vocabulary size |
+| `output_dim` | Size of each word vector |
+| `input_length` | Length of input sequences |
+
+**Output shape:**
+```
+Input:   (batch_size, 100)          # word IDs
+Output:  (batch_size, 100, 128)     # word vectors
+```
+
+---
+
+## 🧠 LSTM & Bidirectional LSTM
+
+### Why LSTM?
+
+Normal RNNs forget long-range context. LSTM fixes this with **memory cells**.
+
+```
+"dog bites man"   vs   "man bites dog"
+→ Same words, different meaning — LSTM tracks the ORDER
+```
+
+| Model | Problem Solved |
+|-------|---------------|
+| Simple RNN | Basic sequence, forgets long dependencies |
+| LSTM | Remembers long-range dependencies |
+| Bidirectional LSTM | Reads both left→right AND right→left |
+
+### LSTM Layer
+
+```python
+layers.LSTM(
+    units=64,                  # Number of memory cells
+    return_sequences=True      # Return output at every timestep
+                               # False = return only final output
+)
+```
+
+| `return_sequences` | Output Shape | Use When |
+|--------------------|-------------|---------|
+| `False` (default) | (batch, units) | Last layer before Dense |
+| `True` | (batch, seq_len, units) | Stacking LSTM layers |
+
+### Bidirectional LSTM
+
+Reads the sequence in **both directions** simultaneously:
+
+```
+Forward:   I → love → deep → learning  →  state_f
+Backward:  learning → deep → love → I  →  state_b
+Combined:  [state_f + state_b]  (concat, default)
+```
+
+```python
+layers.Bidirectional(layers.LSTM(64))
+# Output size = 64 × 2 = 128  (forward + backward)
+```
+
+---
+
+## 🏗️ Model Architecture
+
+```
+Raw Text
+    ↓
+Tokenizer       → words → integers
+    ↓
+pad_sequences   → equal-length sequences
+    ↓
+Embedding       → (batch, 100) → (batch, 100, 128)
+    ↓
+Bidirectional(LSTM(64))  → (batch, 128)
+    ↓
+Dense(20, softmax)       → 20 class probabilities
+    ↓
+Predicted Category
+```
+
+```python
+model = keras.Sequential([
+    layers.Embedding(5000, 128, input_length=100),
+    layers.Bidirectional(layers.LSTM(64)),
+    layers.Dense(20, activation='softmax')
+])
+
+model.compile(
+    optimizer='adam',
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
+```
+
+---
+
+## 📊 LSTM vs Bidirectional LSTM
+
+| Model | Reads | Accuracy |
+|-------|-------|---------|
+| LSTM | Left → Right only | Good |
+| Bidirectional LSTM | Both directions | Better 🚀 |
+
+---
+
+## 🎯 Key Takeaways — Lab 9
+
+```
+✔ Tokenization = convert words → integers
+✔ pad_sequences = make all sequences equal length
+✔ oov_token = handle unknown words
+✔ Embedding = convert word IDs → dense vectors
+✔ LSTM = remembers sequence order (solves vanishing gradient)
+✔ Bidirectional = reads text in both directions
+✔ return_sequences=True = outputs at every timestep
+✔ LabelBinarizer = one-hot encode category labels
+✔ Adam + categorical_crossentropy = standard NLP training setup
+```
+
+---
+
+## ❓ Lab 9 MCQs (40 Questions)
+
+**Q1. What is the main goal of Lab 9?**
+
+A) Image segmentation  
+B) Text classification  
+C) Object detection  
+D) Regression  
+
+✅ **Answer: B**
+
+---
+
+**Q2. Which dataset is used in this lab?**
+
+A) CIFAR-10  
+B) MNIST  
+C) 20 Newsgroups  
+D) COCO  
+
+✅ **Answer: C**
+
+---
+
+**Q3. Which library provides the 20 Newsgroups dataset?**
+
+A) TensorFlow  
+B) NumPy  
+C) Scikit-learn  
+D) Pandas  
+
+✅ **Answer: C**
+
+---
+
+**Q4. What type of neural network is mainly used in this lab?**
+
+A) CNN  
+B) GAN  
+C) LSTM  
+D) Autoencoder  
+
+✅ **Answer: C**
+
+---
+
+**Q5. What does LSTM stand for?**
+
+A) Long Short-Term Memory  
+B) Linear Statistical Tensor Model  
+C) Large Sequential Training Model  
+D) Long Simple Tensor Machine  
+
+✅ **Answer: A**
+
+---
+
+**Q6. Why are LSTMs useful for text?**
+
+A) They process images  
+B) They remember sequence information  
+C) They remove labels  
+D) They reduce vocabulary  
+
+✅ **Answer: B**
+
+---
+
+**Q7. Which preprocessing step converts text into integers?**
+
+A) Pooling  
+B) Padding  
+C) Tokenization  
+D) Flattening  
+
+✅ **Answer: C**
+
+---
+
+**Q8. Which class is used for tokenization?**
+
+A) Dense()  
+B) Tokenizer()  
+C) Embedding()  
+D) LSTM()  
+
+✅ **Answer: B**
+
+---
+
+**Q9. What does Tokenizer.fit_on_texts() do?**
+
+A) Removes labels  
+B) Builds the vocabulary index  
+C) Pads sequences  
+D) Creates embeddings  
+
+✅ **Answer: B**
+
+---
+
+**Q10. What is the purpose of texts_to_sequences()?**
+
+A) Convert numbers to text  
+B) Convert text into integer sequences  
+C) Normalize data  
+D) Remove stop words  
+
+✅ **Answer: B**
+
+---
+
+**Q11. What does OOV mean in NLP?**
+
+A) Out Of Vocabulary  
+B) Output Of Vector  
+C) Order Of Value  
+D) Object Output Variable  
+
+✅ **Answer: A**
+
+---
+
+**Q12. Which parameter handles unknown words?**
+
+A) padding  
+B) input_dim  
+C) oov_token  
+D) return_sequences  
+
+✅ **Answer: C**
+
+---
+
+**Q13. Why is padding needed?**
+
+A) To normalize labels  
+B) To make sequences equal length  
+C) To resize images  
+D) To freeze layers  
+
+✅ **Answer: B**
+
+---
+
+**Q14. Which function performs sequence padding?**
+
+A) pad_sequences()  
+B) fit_on_texts()  
+C) Embedding()  
+D) LabelBinarizer()  
+
+✅ **Answer: A**
+
+---
+
+**Q15. What does padding='post' mean?**
+
+A) Add zeros before sequence  
+B) Add zeros after sequence  
+C) Remove zeros  
+D) Reverse sequence  
+
+✅ **Answer: B**
+
+---
+
+**Q16. What does truncating='pre' do?**
+
+A) Removes values from beginning  
+B) Removes values from end  
+C) Adds zeros at beginning  
+D) Adds zeros at end  
+
+✅ **Answer: A**
+
+---
+
+**Q17. What is the role of the Embedding layer?**
+
+A) Convert text into images  
+B) Convert word IDs into dense vectors  
+C) Reduce batch size  
+D) Remove vocabulary  
+
+✅ **Answer: B**
+
+---
+
+**Q18. Which parameter specifies vocabulary size in Embedding?**
+
+A) units  
+B) input_length  
+C) input_dim  
+D) output_dim  
+
+✅ **Answer: C**
+
+---
+
+**Q19. What does output_dim represent in Embedding?**
+
+A) Number of classes  
+B) Embedding vector size  
+C) Batch size  
+D) Sequence length  
+
+✅ **Answer: B**
+
+---
+
+**Q20. What does input_length represent?**
+
+A) Number of epochs  
+B) Sequence length  
+C) Vocabulary size  
+D) Batch size  
+
+✅ **Answer: B**
+
+---
+
+**Q21. What is the output shape of an Embedding layer?**
+
+A) (batch_size, embedding_dim)  
+B) (batch_size, seq_len, embedding_dim)  
+C) (embedding_dim,)  
+D) (seq_len,)  
+
+✅ **Answer: B**
+
+---
+
+**Q22. Which layer processes sequential data?**
+
+A) Dense  
+B) Conv2D  
+C) LSTM  
+D) Flatten  
+
+✅ **Answer: C**
+
+---
+
+**Q23. What does the units parameter in LSTM control?**
+
+A) Number of memory cells  
+B) Batch size  
+C) Sequence length  
+D) Vocabulary size  
+
+✅ **Answer: A**
+
+---
+
+**Q24. What does return_sequences=True do?**
+
+A) Returns only last output  
+B) Returns all timestep outputs  
+C) Removes outputs  
+D) Reverses sequence  
+
+✅ **Answer: B**
+
+---
+
+**Q25. What is Bidirectional LSTM?**
+
+A) Two Dense layers  
+B) Reads sequences in both directions  
+C) Removes embeddings  
+D) Performs pooling  
+
+✅ **Answer: B**
+
+---
+
+**Q26. Which wrapper creates a Bidirectional LSTM?**
+
+A) Sequential()  
+B) Flatten()  
+C) Bidirectional()  
+D) Dropout()  
+
+✅ **Answer: C**
+
+---
+
+**Q27. What is the default merge mode in Bidirectional()?**
+
+A) sum  
+B) average  
+C) concat  
+D) multiply  
+
+✅ **Answer: C**
+
+---
+
+**Q28. If an LSTM has 8 units, Bidirectional output size is usually?**
+
+A) 4  
+B) 8  
+C) 16  
+D) 32  
+
+✅ **Answer: C**
+
+---
+
+**Q29. Why are Bidirectional LSTMs often better?**
+
+A) They reduce memory usage  
+B) They process context from both directions  
+C) They remove padding  
+D) They train without labels  
+
+✅ **Answer: B**
+
+---
+
+**Q30. Which encoding method converts labels into one-hot vectors?**
+
+A) Tokenizer()  
+B) LabelBinarizer()  
+C) pad_sequences()  
+D) Embedding()  
+
+✅ **Answer: B**
+
+---
+
+**Q31. Which activation is commonly used in the output layer for classification?**
+
+A) ReLU  
+B) Sigmoid  
+C) Softmax  
+D) Tanh  
+
+✅ **Answer: C**
+
+---
+
+**Q32. Which optimizer is commonly used in this lab?**
+
+A) SGD only  
+B) Adam  
+C) RMS only  
+D) Adagrad only  
+
+✅ **Answer: B**
+
+---
+
+**Q33. What problem does LSTM solve better than simple RNN?**
+
+A) Image resizing  
+B) Vanishing gradients  
+C) Over-padding  
+D) Label encoding  
+
+✅ **Answer: B**
+
+---
+
+**Q34. Which type of data is processed in this lab?**
+
+A) Audio  
+B) Video  
+C) Text  
+D) Tabular  
+
+✅ **Answer: C**
+
+---
+
+**Q35. What happens if sequences are too long?**
+
+A) They may be truncated  
+B) They are duplicated  
+C) Labels disappear  
+D) Vocabulary resets  
+
+✅ **Answer: A**
+
+---
+
+**Q36. Which layer usually comes before LSTM in NLP models?**
+
+A) Conv2D  
+B) Embedding  
+C) Flatten  
+D) Pooling  
+
+✅ **Answer: B**
+
+---
+
+**Q37. What is the purpose of num_words in Tokenizer?**
+
+A) Number of labels  
+B) Maximum vocabulary size  
+C) Number of epochs  
+D) Batch size  
+
+✅ **Answer: B**
+
+---
+
+**Q38. Which of the following is true about embeddings?**
+
+A) They are sparse vectors  
+B) They capture semantic meaning  
+C) They remove sequences  
+D) They freeze training  
+
+✅ **Answer: B**
+
+---
+
+**Q39. Which model generally performs better for text understanding?**
+
+A) Standard LSTM  
+B) Bidirectional LSTM  
+C) Linear Regression  
+D) K-Means  
+
+✅ **Answer: B**
+
+---
+
+**Q40. What is the final goal of the model in this lab?**
+
+A) Predict image pixels  
+B) Generate text  
+C) Classify news articles into categories  
+D) Detect objects in images  
+
+✅ **Answer: C**
 
 ---
 ---
@@ -4646,9 +5700,19 @@ D) No training needed
 | `Flatten` | Keras | 2D → 1D conversion |
 | `Conv2D` | Keras | Spatial feature extraction |
 | `MaxPooling2D` | Keras | Downsampling feature maps |
+| `GlobalAveragePooling2D` | Keras | Feature maps → 1D vector |
 | Cross-entropy | Loss Function | Classification error measure |
 | Adam | Optimizer | Adaptive learning rate |
 | Data Augmentation | Technique | Prevent overfitting |
+| `DenseNet121` | Keras Applications | Pre-trained CNN (ImageNet) |
+| `include_top=False` | Transfer Learning | Remove original classifier |
+| Fine-Tuning | Transfer Learning | Unfreeze + low LR training |
+| `Tokenizer` | Keras / NLP | Convert words → integers |
+| `pad_sequences` | Keras / NLP | Equalize sequence lengths |
+| `Embedding` | Keras / NLP | Word IDs → dense vectors |
+| `LSTM` | Keras / NLP | Sequential memory network |
+| `Bidirectional` | Keras / NLP | Forward + backward LSTM |
+| `LabelBinarizer` | Scikit-learn | One-hot encode labels |
 | `GroupBy` | Pandas | Grouping rows by shared value |
 | Histogram | Matplotlib | Data distribution plot |
 
@@ -4656,7 +5720,7 @@ D) No training needed
 
 ## 🌍 Why These Labs Matter
 
-These labs build the **complete Deep Learning pipeline** from foundations to CNNs:
+These labs build the **complete Deep Learning pipeline** from foundations to NLP:
 
 | Lab | Topic | Builds Toward |
 |-----|-------|---------------|
@@ -4667,6 +5731,8 @@ These labs build the **complete Deep Learning pipeline** from foundations to CNN
 | Lab 5 | MNIST MLP (custom loop) | Full neural network pipeline |
 | Lab 6 | Keras Sequential MNIST | High-level model building |
 | Lab 7 | CNN CIFAR-10 | Image classification & CNNs |
+| Lab 8 | Transfer Learning DenseNet121 | Pre-trained models & fine-tuning |
+| Lab 9 | LSTM 20 Newsgroups | NLP text classification pipeline |
 
 ---
 
@@ -4685,4 +5751,5 @@ This project is licensed under the [MIT License](LICENSE).
 <p align="center">
   Made with ❤️ for Deep Learning enthusiasts
 </p>
+
 
